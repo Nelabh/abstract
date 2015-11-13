@@ -14,4 +14,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     {
     	return \View::make('wel');
     }
+    public function request()
+    {
+    		
+    }
 }

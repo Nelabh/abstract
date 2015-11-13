@@ -12,3 +12,4 @@
 */
 
 Route::get('/',array( 'as'=>'bdc','uses'=>'BDController@home'));
+Route::post('request',array( 'as'=>'bdc','uses'=>'BDController@request'));

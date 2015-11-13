@@ -82,8 +82,11 @@ $(function() {
               <th> Sample Required</th>
             </tr>
           </thead>
+          <form method="post" action="request">
+          	<input type="hidden" name="_token" id="_token" value="{!! csrf_token(); !!}}" />
           <tbody id="entity">
             <tr id="entity0">
+
               <td><input type ="text" name="product[]" placeholder="Enter Product" required></td>
               <td><input type ="text" name="description[]" placeholder="Enter Its Description" required></td>
               <td><input type ="number" name="qty[]" placeholder="Enter Quantity" required></td>
@@ -112,12 +115,13 @@ $(function() {
 		</div>
 			<div class="col-md-2 tablebotbtn_formoutersumbtn">
 			<div class="col-md-10 col-md-offset-2 btn btn-default submitbtnform">
-		SUBMIT
+		<button type="submit">SUBMIT</button>
 		</div>
 		</div>
 		</div>
 		</div>
 		</div>
+	</form>
 			<div class="footer_wrap">
 			<div class="container">
 		<div class="row">
