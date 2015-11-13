@@ -25,19 +25,13 @@ $(function() {
 
         
         $('#addScnt').click(function() {
-                $('<tr id="entity'+ i + '"><td><input type ="text" name="product[]" required></td><td><input type ="text" name="description[]" required></td><td><input type ="number" name="qty[]" required></td><td><input type ="text" name="frequency[]" ></td><td><input type="Checkbox" name="sample[]" ></td></tr>').appendTo(scntDiv);
+                $('<tr id="entity'+ i + '"><td><input type ="text" name="product[]" placeholder="Enter Product" required></td><td><input type ="text" name="description[]" placeholder="Enter Its Description" required></td><td><input type ="number" name="qty[]" placeholder="Enter Quantity" required></td><td><input type ="text" name="frequency[]" placeholder="Enter Frequency Of Use" ></td><td><input type="Checkbox" name="sample[]" ></td></tr>').appendTo(scntDiv);
                 i++;
-                alert("Incremented");
+            
                 return false;
         });
         
-        $('#remScnt').click( function() { 
-                if( i > 2 ) {
-                        $(this).parents('tr').remove();
-                        i--;
-                }
-                return false;
-        });
+       
 });
 
 </script>
@@ -90,10 +84,10 @@ $(function() {
           </thead>
           <tbody id="entity">
             <tr id="entity0">
-              <td><input type ="text" name="product[]" required></td>
-              <td><input type ="text" name="description[]" required></td>
-              <td><input type ="number" name="qty[]" required></td>
-              <td><input type ="text" name="frequency[]" ></td>
+              <td><input type ="text" name="product[]" placeholder="Enter Product" required></td>
+              <td><input type ="text" name="description[]" placeholder="Enter Its Description" required></td>
+              <td><input type ="number" name="qty[]" placeholder="Enter Quantity" required></td>
+              <td><input type ="text" name="frequency[]" placeholder="Enter Frequency Of Use" ></td>
               <td><input type="Checkbox" name="sample[]" ></td>
             </tr>
            
