@@ -11,8 +11,36 @@
 <link href="{{URL::asset('css/bootstrap.css')}}" rel="stylesheet"/>
 <link href="{{URL::asset('css/style.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{URL::asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
+
+<script src="{{URL::asset('js/bootstrap.js')}}"></script>
+<script src="{{URL::asset('js/jquery.min.js')}}"></script>
+
 </head>
 <body>
+
+<script>
+$(function() {
+        var scntDiv = $('#entity');
+        var i = $('#entity tr').size() + 1;
+
+        
+        $('#addScnt').click(function() {
+                $('<tr id="entity'+ i + '"><td><input type ="text" name="product[]" required></td><td><input type ="text" name="description[]" required></td><td><input type ="number" name="qty[]" required></td><td><input type ="text" name="frequency[]" ></td><td><input type="Checkbox" name="sample[]" ></td></tr>').appendTo(scntDiv);
+                i++;
+                alert("Incremented");
+                return false;
+        });
+        
+        $('#remScnt').click( function() { 
+                if( i > 2 ) {
+                        $(this).parents('tr').remove();
+                        i--;
+                }
+                return false;
+        });
+});
+
+</script>
 <nav class="nav navbar-default navbar nav_wrap">
 <div class="container">
 	<div class="row">
@@ -60,47 +88,15 @@
               <th> Sample Required</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Oak Wood Dinner set</td>
-              <td>used Fine material</td>
-              <td>10</td>
-              <td></td>
-              <td><input type=
-			  "Checkbox"</td>
+          <tbody id="entity">
+            <tr id="entity0">
+              <td><input type ="text" name="product[]" required></td>
+              <td><input type ="text" name="description[]" required></td>
+              <td><input type ="number" name="qty[]" required></td>
+              <td><input type ="text" name="frequency[]" ></td>
+              <td><input type="Checkbox" name="sample[]" ></td>
             </tr>
-           <tr>
-              <td>Oak Wood Dinner set</td>
-              <td>used Fine material</td>
-              <td>10</td>
-              <td></td>
-              <td><input type=
-			  "Checkbox"</td>
-            </tr>
-            <tr>
-              <td>Oak Wood Dinner set</td>
-              <td>used Fine material</td>
-              <td>10</td>
-              <td></td>
-              <td><input type=
-			  "Checkbox"</td>
-            </tr>
-           <tr>
-              <td>Oak Wood Dinner set</td>
-              <td>used Fine material</td>
-              <td>10</td>
-              <td></td>
-              <td><input type=
-			  "Checkbox"</td>
-            </tr>
-            <tr>
-              <td>Oak Wood Dinner set</td>
-              <td>used Fine material</td>
-              <td>10</td>
-              <td></td>
-              <td><input type=
-			  "Checkbox"</td>
-            </tr>
+           
           </tbody>
           <tfoot>
        
@@ -116,7 +112,7 @@
 		<div class="row">
 		<div class="col-md-10 col-md-offset-1 tablebotbtn_formouter">
 			<div class="col-md-10 tablebotbtn_forminner">
-			<div class="btn btn-info">
+			<div class="btn btn-info" id="addScnt">
 		<span>+</span>Add Another Field
 		</div>
 		</div>
@@ -237,6 +233,5 @@ procurement process for hospitality industry. </p>
 			</div>
 			</div>
 </body>
- <script src="{{URL::asset('js/bootstrap.js')}}"></script>
-<script src="{{URL::asset('js/jquery.js')}}"></script>
-</html>
+
+ </html>
