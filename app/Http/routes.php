@@ -12,4 +12,4 @@
 */
 
 Route::get('/',array( 'as'=>'bdc','uses'=>'BDController@home'));
-Route::post('request',array( 'as'=>'bdc','uses'=>'BDController@request'));
+Route::post('request',array( 'before'=>'csrf','uses'=>'BDController@request'));

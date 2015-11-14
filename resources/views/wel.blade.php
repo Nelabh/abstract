@@ -14,27 +14,28 @@
 
 <script src="{{URL::asset('js/bootstrap.js')}}"></script>
 <script src="{{URL::asset('js/jquery.min.js')}}"></script>
-
-</head>
-<body>
-
-<script>
+    <script>
 $(function() {
         var scntDiv = $('#entity');
-        var i = $('#entity tr').size() + 1;
+        var i = $('#entity tr').size();
 
         
         $('#addScnt').click(function() {
-                $('<tr id="entity'+ i + '"><td><input type ="text" name="product[]" placeholder="Enter Product" required></td><td><input type ="text" name="description[]" placeholder="Enter Its Description" required></td><td><input type ="number" name="qty[]" placeholder="Enter Quantity" required></td><td><input type ="text" name="frequency[]" placeholder="Enter Frequency Of Use" ></td><td><input type="Checkbox" name="sample[]" ></td></tr>').appendTo(scntDiv);
+                $("#entity").append('<tr id="entity"><td><input type ="text" name="product[]" placeholder="Enter Product" required></td><td><input type ="text" name="description[]" placeholder="Enter Its Description" required></td><td><input type ="number" name="qty[]" placeholder="Enter Quantity" required></td><td><input type ="text" name="frequency[]" placeholder="Enter Frequency Of Use" ></td><td><input type="Checkbox" name="sample[]" value="'+i+'""></td></tr>');
                 i++;
             
-                return false;
+               
         });
         
        
 });
 
 </script>
+
+</head>
+<body>
+
+
 <nav class="nav navbar-default navbar nav_wrap">
 <div class="container">
 	<div class="row">
@@ -66,6 +67,9 @@ $(function() {
 		</div>
 		</div>
 		</div>
+		{!!Form::open(array('url'=>'request', 'method'=>'post' ))!!}
+                    {!!Form::token()!!}
+           	
 			<div class="container">
 		<div class="row">
 		<div class="col-md-12 schedule_formouter">
@@ -82,18 +86,17 @@ $(function() {
               <th> Sample Required</th>
             </tr>
           </thead>
-          <form method="post" action="request">
-          	<input type="hidden" name="_token" id="_token" value="{!! csrf_token(); !!}}" />
-          <tbody id="entity">
+                   <tbody id="entity">
             <tr id="entity0">
 
               <td><input type ="text" name="product[]" placeholder="Enter Product" required></td>
               <td><input type ="text" name="description[]" placeholder="Enter Its Description" required></td>
               <td><input type ="number" name="qty[]" placeholder="Enter Quantity" required></td>
               <td><input type ="text" name="frequency[]" placeholder="Enter Frequency Of Use" ></td>
-              <td><input type="Checkbox" name="sample[]" ></td>
+              <td><input type="Checkbox" name="sample[]" value = "0" ></td>
             </tr>
-           
+            
+       
           </tbody>
           <tfoot>
        
@@ -104,7 +107,7 @@ $(function() {
 		</div>
 		</div>
       </div><!--end of .table-responsive-->
-	  			
+	  		
 		<div class="container">
 		<div class="row">
 		<div class="col-md-10 col-md-offset-1 tablebotbtn_formouter">
@@ -121,7 +124,7 @@ $(function() {
 		</div>
 		</div>
 		</div>
-	</form>
+		</form>
 			<div class="footer_wrap">
 			<div class="container">
 		<div class="row">
