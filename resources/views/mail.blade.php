@@ -1,1 +1,1 @@
-<H1>Hello Buddy.</H1>
+{!!$text!!}
