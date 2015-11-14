@@ -18,7 +18,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     }
     public function request()
     {
-    	$all = Input::all();
+    	//$all = Input::all();
     	$quantity = Input::get('qty');
     	$product = Input::get('product');
     	$description = Input::get('desciption');
@@ -28,14 +28,45 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 foreach($quantity as $quan) {
    $num++;
 	}
+    $text="";
+     $text.="<h1>The Mail Format Is :</h1></br>";
+    for($prod = 0 ; $prod < $num ; $prod++)
+    {
+       
+        $text.="<h2>Product: ". strval($prod + 1)."</h2></br>";
+        $text.="Name: ".$product[$prod]."</br>";
+        $text.="Description: ".$description[$prod]."</br>";
+        $text.="Quantity: ".$quantity[$prod]."</br>";
+        $text.="Frequency Of Purchase: ".$frequency[$prod]."</br>";
+        if(!empty($sample))
+        {
+             if(in_array($prod, $sample))
+            {
+                 $text.="Sample Required: Yes </br>";
+            }
+            else
+                {
+                 $text.="Sample Required: No </br>";
+        
+             }
+        }
+        else
+        {
+            $text.="Sample Required: No </br>";
+        
+        }
+
+    }
+    /*
 	 Mail::send('mail', array(), function ($m) {
             $m->from('nelabhkotiya@gmail.com', 'Hello');
 
             $m->to('nelabhkotiya@gmail.com', 'nelabh')->subject('First Mail!');
         });
 
+	*/
+
 	
-	
-    		return $all;
+    		return $text;
     }
 }
