@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Input;
+use DB;
 use Mail;
 use Views;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -21,7 +22,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     	//$all = Input::all();
     	$quantity = Input::get('qty');
     	$product = Input::get('product');
-    	$description = Input::get('desciption');
+    	$description = Input::get('description');
     	$sample = Input::get('sample');
     	$frequency = Input::get('frequency');
     	$num=0;
@@ -33,6 +34,7 @@ foreach($quantity as $quan) {
     for($prod = 0 ; $prod < $num ; $prod++)
     {
        
+      
         $text.="<h2>Product: ". strval($prod + 1)."</h2></br>";
         $text.="Name: ".$product[$prod]."</br>";
         $text.="Description: ".$description[$prod]."</br>";
@@ -43,18 +45,20 @@ foreach($quantity as $quan) {
              if(in_array($prod, $sample))
             {
                  $text.="Sample Required: Yes </br>";
+                 $test="Yes";
             }
             else
                 {
                  $text.="Sample Required: No </br>";
-        
+                $test="No";
              }
         }
         else
         {
             $text.="Sample Required: No </br>";
-        
+            $test="No";
         }
+         DB::table('product')->insert(['product' => $product[$prod], 'description' => $description[$prod],'quantity' => $quantity[$prod],'frequency' => $frequency[$prod],'sample' => $test]);
 
     }
     /*

@@ -20,12 +20,13 @@ class CreateProductTable extends Migration
             $table->string('description');
             $table->integer('quantity');
             $table->string('frequency');
+            $table->string('sample');
             $table->timestamps();
             
             
             
 
-        })
+        });
 
     }
 

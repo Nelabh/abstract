@@ -21,7 +21,7 @@ $(function() {
 
         
         $('#addScnt').click(function() {
-                $("#entity").append('<tr id="entity"><td><input type ="text" name="product[]" placeholder="Enter Product" required></td><td><input type ="text" name="description[]" placeholder="Enter Its Description" required></td><td><input type ="number" name="qty[]" placeholder="Enter Quantity" required></td><td><input type ="text" name="frequency[]" placeholder="Enter Frequency Of Use" ></td><td><input type="Checkbox" name="sample[]" value="'+i+'""></td></tr>');
+                $("#entity").append('<tr id="entity"><td><input type ="text" name="product[]" placeholder="Enter Product" required></td><td><input type ="text" name="description[]" placeholder="Enter Its Description" required></td><td><input type ="number" name="qty[]" placeholder="Enter Quantity" required></td><td><input type ="text" name="frequency[]" placeholder="Enter Frequency Of Purchase" ></td><td><input type="Checkbox" name="sample[]" value="'+i+'""></td></tr>');
                 i++;
             
                
@@ -92,7 +92,7 @@ $(function() {
               <td><input type ="text" name="product[]" placeholder="Enter Product" required></td>
               <td><input type ="text" name="description[]" placeholder="Enter Its Description" required></td>
               <td><input type ="number" name="qty[]" placeholder="Enter Quantity" required></td>
-              <td><input type ="text" name="frequency[]" placeholder="Enter Frequency Of Use" ></td>
+              <td><input type ="text" name="frequency[]" placeholder="Enter Frequency Of Purchase" ></td>
               <td><input type="Checkbox" name="sample[]" value = "0" ></td>
             </tr>
             
