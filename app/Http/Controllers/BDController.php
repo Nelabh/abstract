@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Input;
+use Mail;
 use Views;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -27,12 +28,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 foreach($quantity as $quan) {
    $num++;
 	}
+	 Mail::send('mail', array(), function ($m) {
+            $m->from('nelabhkotiya@gmail.com', 'Hello');
 
+            $m->to('nelabhkotiya@gmail.com', 'nelabh')->subject('First Mail!');
+        });
 
-	for ($prod=0	;	$prod<=$num 	;	$prod++)
-	{
-
-	}
+	
 	
     		return $all;
     }
