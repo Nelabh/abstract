@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\testing;
 use Input;
 use DB;
 use Mail;
@@ -15,8 +15,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function home()
     {
-    	return \View::make('wel');
+    	return \View::make('testing.wel');
     }
+    public function info()
+    {
+        return \View::make('testing.reg');
+    }
+
     public function request()
     {
     	//$all = Input::all();
@@ -58,14 +63,13 @@ foreach($quantity as $quan) {
             $text.="Sample Required: No <br/>";
             $test="No";
         }
-         DB::table('product')->insert(['product' => $product[$prod], 'description' => $description[$prod],'quantity' => $quantity[$prod],'frequency' => $frequency[$prod],'sample' => $test]);
+      //   DB::table('product')->insert(['product' => $product[$prod], 'description' => $description[$prod],'quantity' => $quantity[$prod],'frequency' => $frequency[$prod],'sample' => $test]);
 
     }
     
-	 Mail::send(['html'=>'mail'], array('text'=>$text), function ($m) {
-            $m->from('nelabhkotiya@gmail.com', 'Hello');
-
-            $m->to('nelabhkotiya@gmail.com', 'nelabh')->subject('Requirements');
+	 Mail::send(['html'=>'testing.mail'], array('text'=>$text), function ($m) {
+            $m->from('contact@vkulp.com');
+            $m->to('pramilabharti99@gmail.com', 'Pramila')->subject('Requirements');
         });
 
 	

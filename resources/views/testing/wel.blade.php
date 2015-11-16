@@ -8,12 +8,12 @@
 <meta name="author" content="">
 <title>form</title>
 <!-- Bootstrap core CSS -->
-<link href="{{URL::asset('css/bootstrap.css')}}" rel="stylesheet"/>
-<link href="{{URL::asset('css/style.css')}}" rel="stylesheet" type="text/css" />
-<link href="{{URL::asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{URL::asset('testing/css/bootstrap.css')}}" rel="stylesheet"/>
+<link href="{{URL::asset('testing/css/style.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{URL::asset('testing/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
 
-<script src="{{URL::asset('js/bootstrap.js')}}"></script>
-<script src="{{URL::asset('js/jquery.min.js')}}"></script>
+<script src="{{URL::asset('testing/js/bootstrap.js')}}"></script>
+<script src="{{URL::asset('testing/js/jquery.min.js')}}"></script>
     <script>
 $(function() {
         var scntDiv = $('#entity');
@@ -41,7 +41,7 @@ $(function() {
 	<div class="row">
 		<div class="col-md-12 nav_outer">
 			<div class="col-md-2 logo_outer">
-			<img src="{{URL::asset('img/logo.png')}}" class="img-responsive">
+			<img src="{{URL::asset('testing/img/logo.png')}}" class="img-responsive">
 			</div>
 			<div class="col-md-7 search_barouter">
 			<div class="col-md-12 input-group inputdiv">
@@ -174,7 +174,7 @@ procurement process for hospitality industry. </p>
 		</div>
 		<div class="col-md-12 sociallink_outer">
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('img/arrow.png')}}">
+	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
 	<a href="#">Home</a>
@@ -183,7 +183,7 @@ procurement process for hospitality industry. </p>
 		<div class="col-md-12 sociallink_outer">
 		<hr>
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('img/arrow.png')}}">
+	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
 	<a href="#">About</a>
@@ -192,7 +192,7 @@ procurement process for hospitality industry. </p>
 		<div class="col-md-12 sociallink_outer">
 		<hr>
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('img/arrow.png')}}">
+	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
 	<a href="#">Blog</a>
@@ -201,7 +201,7 @@ procurement process for hospitality industry. </p>
 		<div class="col-md-12 sociallink_outer">
 		<hr>
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('img/arrow.png')}}">
+	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
 	<a href="#">team</a>
@@ -210,7 +210,7 @@ procurement process for hospitality industry. </p>
 		<div class="col-md-12 sociallink_outer">
 		<hr>
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('img/arrow.png')}}">
+	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
 	<a href="#">Privecy Policy</a>
