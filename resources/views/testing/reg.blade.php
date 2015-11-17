@@ -14,23 +14,7 @@
 
 <script src="{{URL::asset('testing/js/bootstrap.js')}}"></script>
 <script src="{{URL::asset('testing/js/jquery.min.js')}}"></script>
-    <script>
-$(function() {
-        var scntDiv = $('#entity');
-        var i = $('#entity tr').size();
-
-        
-        $('#addScnt').click(function() {
-                $("#entity").append('<tr id="entity"><td><input type ="text" name="product[]" placeholder="Enter Product" required></td><td><input type ="text" name="description[]" placeholder="Enter Its Description" required></td><td><input type ="number" name="qty[]" placeholder="Enter Quantity" required></td><td><input type ="text" name="frequency[]" placeholder="Enter Frequency Of Purchase" ></td><td><input type="Checkbox" name="sample[]" value="'+i+'""></td></tr>');
-                i++;
-            
-               
-        });
-        
-       
-});
-
-</script>
+ 
 
 </head>
 <body>
@@ -74,33 +58,26 @@ $(function() {
 		<div class="col-md-12 schedule_form">
       <div class="col-md-12 table-responsive">
       	      <div class="col-md-6">
-                        {!! Form::open(['url','user/register']) !!}
+                        {!! Form::open(['url','user/info']) !!}
                         <div class="form-group">
                             {!! Form::text('name', Input::old('name'), ['class'=>'form-control input-lg','placeholder'=>'Full Name']) !!}
-                            <span class="has-error text-danger">{{$errors->first('name')}}</span>
                         </div>
                         <div class="form-group">
                             {!! Form::email('email', Input::old('email'), ['class'=>'form-control input-lg','placeholder'=>'Your Email ID']) !!}
-                            <span class="has-error text-danger">{{$errors->first('email')}}</span>
                         </div>
                         <div class="form-group">
                             {!! Form::text('username', Input::old('username'), ['class'=>'form-control input-lg','placeholder'=>'Company Name']) !!}
-                            <span class="has-error text-danger">{{$errors->first('username')}}</span>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! Form::password('password', ['class'=>'form-control
-                                    input-lg','placeholder'=>'Password']) !!}
-                                    <span class="has-error text-danger">{{$errors->first('password')}}</span>
+                                    {!! Form::text('address',Input::old('address'), ['class'=>'form-control
+                                    input-lg','placeholder'=>'Address']) !!}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! Form::password('password_confirmation', ['class'=>'form-control
-                                    input-lg','placeholder'=>'Confirm Password']) !!}
-                                    <span class="has-error text-danger">{{$errors->first('password_confirmation')}}</span>
-                                </div>
+                                           </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -109,7 +86,6 @@ $(function() {
                                 {!! Form::text('phone', Input::old('phone'), ['class'=>'form-control
                                 input-lg','placeholder'=>'Phone Number','aria-describedby' => 'basic-addon1']) !!}
                             </div>
-                            <span class="has-error text-danger">{{$errors->first('phone')}}</span>
                         </div>
                         <div class="form-group">
                          </div>

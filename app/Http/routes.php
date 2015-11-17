@@ -13,4 +13,5 @@
 
 Route::get('buyer',array( 'as'=>'bdc','uses'=>'testing\BDController@home'));
 Route::post('request',array( 'before'=>'csrf','uses'=>'testing\BDController@request'));
- Route::get('information',array( 'as'=>'info','uses'=>'testing\BDController@info'));
+Route::get('information',array( 'as'=>'info','uses'=>'testing\BDController@info'));
+Route::get('detail',array( 'as'=>'pro_detail','uses'=>'testing\BDController@pro_detail'));
