@@ -8,10 +8,10 @@
 <meta name="author" content="">
 <title>detail page</title>
 <!-- Bootstrap core CSS -->
-<link href="{{URL::asset('testing/css/bootstrap.css" rel="stylesheet')}}"/>
-<link href="{{URL::asset('testing/css/style.css')}}" rel="stylesheet" type="text/css" />
-<link href="{{URL::asset('testing/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
-<link href="{{URL::asset('testing/css/responsive-01.css')}}" rel="stylesheet">
+<link href="{{URL::asset('testing/b/css/bootstrap.css')}}" rel="stylesheet"/>
+<link href="{{URL::asset('testing/b/css/style.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{URL::asset('testing/b/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{URL::asset('testing/b/css/responsive-01.css')}}" rel="stylesheet">
 </head>
 <body>
 <nav class="nav navbar-default navbar nav_wrap">
@@ -19,7 +19,7 @@
 	<div class="row">
 		<div class="col-md-12 nav_outer">
 			<div class="col-md-2 logo_outer">
-			<img src="{{URL::asset('testing/img/logo.png')}}" class="img-responsive">
+			<img src="{{URL::asset('testing/b/img/logo.png')}}" class="img-responsive">
 			</div>
 			<div class="col-md-7 search_barouter display-sec">
 			<div class="col-md-12 input-group inputdiv">
@@ -29,7 +29,7 @@
 			<div class="col-md-3 btnlogin_outer-001">
 			
 			<div class="togg-nav">
-					<label class="togg-inner" for="menu-toggle"><img src="{{URL::asset('testing/img/menu.png')}}" /></label>
+					<label class="togg-inner" for="menu-toggle"><img src="{{URL::asset('testing/b/img/menu.png')}}" /></label>
 					<input type="checkbox" id="menu-toggle"/>
 					<ul id="menu">
 					  <li><a href="#">Log in</a></li>
@@ -97,13 +97,13 @@
 		<div class="row">
 		<div class="col-md-12 detailpro_outer">
 		<div class="col-md-3 detailpro_left">
-		<div class="col-md-12 detailpro_inner1"><a href="#"><img src="{{URL::asset('testing/img/detailproimg.png')}}"></a>
+		<div class="col-md-12 detailpro_inner1"><a href="#"><img src="{{URL::asset('testing/b/img/detailproimg.png')}}"></a>
 		</div>
 		<div class="col-md-12 detailpro_inner2">
-		<div class="col-md-3 detailproimgdiv"><a href="#"><img src="{{URL::asset('testing/img/lube1.png')}}" class="img-responsive"></a></div>
-		<div class="col-md-3 detailproimgdiv"><a href="#"><img src="{{URL::asset('testing/img/lube1.png')}}" class="img-responsive"></a></div>
-		<div class="col-md-3 detailproimgdiv"><img src="{{URL::asset('testing/img/lube1.png')}}" class="img-responsive"></a></div>
-		<div class="col-md-3 detailproimgdiv"><img src="{{URL::asset('testing/img/lube1.png')}}" class="img-responsive"></a></div>
+		<div class="col-md-3 detailproimgdiv"><a href="#"><img src="{{URL::asset('testing/b/img/lube1.png')}}" class="img-responsive"></a></div>
+		<div class="col-md-3 detailproimgdiv"><a href="#"><img src="{{URL::asset('testing/b/img/lube1.png')}}" class="img-responsive"></a></div>
+		<div class="col-md-3 detailproimgdiv"><img src="{{URL::asset('testing/b/img/lube1.png')}}" class="img-responsive"></a></div>
+		<div class="col-md-3 detailproimgdiv"><img src="{{URL::asset('testing/b/img/lube1.png')}}" class="img-responsive"></a></div>
 		</div>
 		</div>
 		<div class="col-md-9 detailpro_right">
@@ -127,7 +127,7 @@
 		<div class="col-md-10 check_wrap">
 		<div class="col-md-12 check_outer">
 		<div class="col-md-6 check_locator">
-		<div class="col-md-1 locatorouter"><img src="{{URL::asset('testing/img/locator-red.png')}}"></div>
+		<div class="col-md-1 locatorouter"><img src="{{URL::asset('testing/b/img/locator-red.png')}}"></div>
 		<div class="col-md-10 locatortxt"><h4>Check Availabilty at</h4></div>
 		</div>
 		<div class="col-md-6 check_content">
@@ -239,16 +239,16 @@ PLACE ORDER
 		<div class="col-md-12 doortodoor__outer">
 		<div class="col-md-12 doortodoor__wrap">
 		<div class="col-md-4 doortodoor__left">
-		<div class="col-md-2"><a href="#"><img src="{{URL::asset('testing/img/doorimg.png')}}"></a></div>
+		<div class="col-md-2"><a href="#"><img src="{{URL::asset('testing/b/img/doorimg.png')}}"></a></div>
 		<div class="col-md-9 doortxt"><p>DOOR TO DOOR</p> <p>DELIVERY</p></div>
 		</div>
 		<div class="col-md-4 doortodoor__mid">
-		<div class="col-md-2"><a href="#"><img src="{{URL::asset('testing/img/refresh.png')}}"></a></div>
+		<div class="col-md-2"><a href="#"><img src="{{URL::asset('testing/b/img/refresh.png')}}"></a></div>
 		<div class="col-md-9 doortxt"><p>FRESH AND EASY 
         </p> <p>RETURNS</p></div>
 		</div>
 		<div class="col-md-4 doortodoor__right">
-		<div class="col-md-2"><a href="#"><img src="{{URL::asset('testing/img/close.png')}}"></a></div>
+		<div class="col-md-2"><a href="#"><img src="{{URL::asset('testing/b/img/close.png')}}"></a></div>
 		<div class="col-md-9 doortxt"><p>ONLINE</p> <p class="pnone">CANCLLATIONS</p></div>
 		</div>
 		</div>
@@ -273,8 +273,8 @@ Chair’s backrest has slatted Design.</li>
 		<div class="col-md-12 feature__outer">
 		<div class="col-md-12 infohelp__wrap">
 		<div class="col-md-3 infohelp__txt"><p>Was this information Helpful?</p></div>
-		<div class="col-md-2 infohelp__txt2"><span>Yes</span><a href="#"><img src="{{URL::asset('testing/img/thumbsup.png')}}"></a></div>
-		<div class="col-md-2 infohelp__txt2"><span>No</span><a href="#"><img src="{{URL::asset('testing/img/thumbsdown.png')}}"></a></div>
+		<div class="col-md-2 infohelp__txt2"><span>Yes</span><a href="#"><img src="{{URL::asset('testing/b/img/thumbsup.png')}}"></a></div>
+		<div class="col-md-2 infohelp__txt2"><span>No</span><a href="#"><img src="{{URL::asset('testing/b/img/thumbsdown.png')}}"></a></div>
 </div>
 </div>
 </div>
@@ -409,7 +409,7 @@ procurement process for hospitality industry. </p>
 		</div>
 		<div class="col-md-12 sociallink_outer">
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('testing/img/arrow.png')}}">
+	<img src="{{URL::asset('testing/b/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
 	<a href="#">Home</a>
@@ -418,7 +418,7 @@ procurement process for hospitality industry. </p>
 		<div class="col-md-12 sociallink_outer">
 		<hr>
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('testing/img/arrow.png')}}">
+	<img src="{{URL::asset('testing/b/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
 	<a href="#">About</a>
@@ -427,7 +427,7 @@ procurement process for hospitality industry. </p>
 		<div class="col-md-12 sociallink_outer">
 		<hr>
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('testing/img/arrow.png')}}">
+	<img src="{{URL::asset('testing/b/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
 	<a href="#">Blog</a>
@@ -436,7 +436,7 @@ procurement process for hospitality industry. </p>
 		<div class="col-md-12 sociallink_outer">
 		<hr>
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('testing/img/arrow.png')}}">
+	<img src="{{URL::asset('testing/b/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
 	<a href="#">team</a>
@@ -445,7 +445,7 @@ procurement process for hospitality industry. </p>
 		<div class="col-md-12 sociallink_outer">
 		<hr>
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('testing/img/arrow.png')}}">
+	<img src="{{URL::asset('testing/b/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
 	<a href="#">Privecy Policy</a>
@@ -470,7 +470,7 @@ procurement process for hospitality industry. </p>
 			</div>
 		
  </body>
- <script src="{{URL::asset('testing/js/bootstrap.js')}}"></script>
-<script src="{{URL::asset('testing/js/jquery.min.js')}}"></script>
+ <script src="{{URL::asset('testing/b/js/bootstrap.js')}}"></script>
+<script src="{{URL::asset('testing/b/js/jquery.min.js')}}"></script>
 
   </html>
