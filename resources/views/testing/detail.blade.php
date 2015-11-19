@@ -93,11 +93,11 @@
 		</div>
 		</div>
 		</div>
-				<div class="container">
+		<div class="container">
 		<div class="row">
 		<div class="col-md-12 detailpro_outer">
-		<div class="col-md-3 detailpro_left">
-		<div class="col-md-12 detailpro_inner1"><a href="#"><img src="{{URL::asset('testing/b/img/detailproimg.png')}}"></a>
+		<div class="col-md-5 detailpro_left">
+		<div class="col-md-12 detailpro_inner1"><a href="#"><img src="{{URL::asset('testing/b/img/detailproimg.png')}}" class="img-responsive"></a>
 		</div>
 		<div class="col-md-12 detailpro_inner2">
 		<div class="col-md-3 detailproimgdiv"><a href="#"><img src="{{URL::asset('testing/b/img/lube1.png')}}" class="img-responsive"></a></div>
@@ -106,25 +106,25 @@
 		<div class="col-md-3 detailproimgdiv"><img src="{{URL::asset('testing/b/img/lube1.png')}}" class="img-responsive"></a></div>
 		</div>
 		</div>
-		<div class="col-md-9 detailpro_right">
+		<div class="col-md-7 detailpro_right">
 		<div class="col-md-12 detailpro_righth1">
 		<h3>AUTO LUBE HDPE CONTAINER WITH I.S. CAP | P37</h3>
 		<div class="col-md-12 detailpro_righth1">
-		<div class="col-md-3 detailpro_rightpara">
+		<div class="col-md-4 detailpro_rightpara">
 		<p>Color black</p>
          <p>Advantaged with venti..</p>
 		</div>
-		<div class="col-md-3 detailpro_rightpara">
+		<div class="col-md-4 detailpro_rightpara">
 		<p>Adjestable Srape:yes</p>
 		<p>Enable with acrivated..</p>
 		</div>
-		<div class="col-md-3 detailpro_rightpara">
+		<div class="col-md-4 detailpro_rightpara">
 		<p>Material:Nylon</p>
          <p>View all item details..</p>
 		</div>
 		</div>
 		</div>
-		<div class="col-md-10 check_wrap">
+		<div class="col-md-12 check_wrap">
 		<div class="col-md-12 check_outer">
 		<div class="col-md-6 check_locator">
 		<div class="col-md-1 locatorouter"><img src="{{URL::asset('testing/b/img/locator-red.png')}}"></div>
@@ -133,13 +133,13 @@
 		<div class="col-md-6 check_content">
 	<div class="col-md-11 input-group checkouter">
   <input type="text" class="form-control checkinput" placeholder="Recipient's username" aria-describedby="basic-addon2">
-  <span class="input-group-addon addcheck" id="basic-addon2 ">Check</span>
+  <span class="input-group-addon addcheck" id="basic-addon2 "><a href="#">Check</a></span>
 	</div>
 		</div>
 		</div>
 		</div>
 		<div class="col-md-12 placeorder_wrap">
-	<div class="col-md-5 placeorder_outer">
+	<div class="col-md-6 placeorder_outer">
 	<div class="col-md-12 placeorder_headbg">
 	<h4>Rs 6720 per piece</h4>
 	</div>
@@ -209,7 +209,7 @@ PLACE ORDER
 	</div>
 
 	</div>
-	<div class="col-md-5 sold_wrap">
+	<div class="col-md-6 sold_wrap">
 	<div class="col-md-12 sold_outer">
 	<h3>Sold by</h3>
 <h4>HNG Retail</h4>
@@ -249,7 +249,7 @@ PLACE ORDER
 		</div>
 		<div class="col-md-4 doortodoor__right">
 		<div class="col-md-2"><a href="#"><img src="{{URL::asset('testing/b/img/close.png')}}"></a></div>
-		<div class="col-md-9 doortxt"><p>ONLINE</p> <p class="pnone">CANCLLATIONS</p></div>
+		<div class="col-md-9 doortxt"><p>ONLINE</p> <p class="pnone">CANCELLATIONS</p></div>
 		</div>
 		</div>
 		</div>

@@ -308,9 +308,9 @@ background: url('../img/AjaxLoader.gif') no-repeat center center #aebab6;
 
 
 .getbutton_outer {
-  float: right !important;
-  padding-right: 23px !important;
-  width: 52% !important;
+     float: right !important;
+    padding-right: 20px !important;
+    width: 41% !important;
 }
 .get_quotations {
   width: 100% !important;
