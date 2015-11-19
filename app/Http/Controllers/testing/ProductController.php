@@ -15,9 +15,10 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
     
-    public function index()
+    public function index($id)
     {
-        return \View::make('testing.detail');
+        $data=DB::table('product')->where('id',$id)->pluck('product');
+        return \View::make('testing.detail',['data'=>$data]);
     }
 
     

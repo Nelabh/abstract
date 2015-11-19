@@ -108,7 +108,7 @@
 		</div>
 		<div class="col-md-7 detailpro_right">
 		<div class="col-md-12 detailpro_righth1">
-		<h3>AUTO LUBE HDPE CONTAINER WITH I.S. CAP | P37</h3>
+		<h3>{{	$data	}}</h3>
 		<div class="col-md-12 detailpro_righth1">
 		<div class="col-md-4 detailpro_rightpara">
 		<p>Color black</p>
