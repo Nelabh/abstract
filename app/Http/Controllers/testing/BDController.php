@@ -42,11 +42,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     	$sample = Input::get('sample');
     	$frequency = Input::get('frequency');
     	$num=0;
+        
 foreach($quantity as $quan) {
    $num++;
 	}
     $text="";
-     $text.="<h1>The Mail Format Is :</h1><br/>";
+     $text.="Dear vKulp Sales Team,<br/>";
+     $text.="The order has been placed by Username of Buyer with following specifications:";
     for($prod = 0 ; $prod < $num ; $prod++)
     {
        
@@ -55,7 +57,21 @@ foreach($quantity as $quan) {
         $text.="Name: ".$product[$prod]."<br/>";
         $text.="Description: ".$description[$prod]."<br/>";
         $text.="Quantity: ".$quantity[$prod]."<br/>";
-        $text.="Frequency Of Purchase: ".$frequency[$prod]."<br/>";
+        if($frequency[$prod]=="0")
+        {
+             $text.="Frequency Of Purchase:Once in 7 Days <br/>";
+       
+        }
+        else   if($frequency[$prod]=="1")
+        {
+             $text.="Frequency Of Purchase:Once in 15 Days <br/>";
+       
+        }
+        else  if($frequency[$prod]=="2")
+        {
+             $text.="Frequency Of Purchase:Once in 30 Days <br/>";
+       
+        }
         if(!empty($sample))
         {
              if(in_array($prod, $sample))
@@ -74,13 +90,22 @@ foreach($quantity as $quan) {
             $text.="Sample Required: No <br/>";
             $test="No";
         }
+       
+        
          DB::table('product')->insert(['product' => $product[$prod], 'description' => $description[$prod],'quantity' => $quantity[$prod],'frequency' => $frequency[$prod],'sample' => $test]);
 
     }
-    
+         $text.="<h2>Buyer Details are as follows:</h2><br/>";
+        $text.="Name of the Buyer: Name from Login Details<br/>";
+        $text.="Name of the Hotel: Company’s Name from Login Details <br/>";
+        $text.="Email id: email id from Login Details  <br/>";
+        $text.="Phone No.: Ph no. from Login Details   <br/>";
+        $text.="Address: Address from BuyerDetailsPage    <br/>";
+        $text.="Please complete the Order within 48-hours.<br/>Regards,<br/>";
+
 	 Mail::send(['html'=>'testing.mail'], array('text'=>$text), function ($m) {
             $m->from('contact@vkulp.com');
-            $m->to('nelabhkotiya@gmail.com', 'Nelabh')->subject('Requirements');
+            $m->to('pramilabharti99@gmail.com', 'Pramila')->subject('Order Placed by Buyer Name');
         });
 
 	
