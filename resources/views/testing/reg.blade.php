@@ -58,7 +58,7 @@
 		<div class="col-md-12 schedule_form">
       <div class="col-md-12 table-responsive">
       	      <div class="col-md-6">
-                        {!! Form::open(['url','user/info']) !!}
+                        {!! Form::open(['url'=>'post_info']) !!}
                         <div class="form-group">
                             {!! Form::text('name', $name, ['class'=>'form-control input-lg','placeholder'=>'Full Name']) !!}
                         </div>

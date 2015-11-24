@@ -98,18 +98,18 @@ foreach($quantity as $quan) {
 
         return "Data Inserted";
     }
-    public function insert_meta()
+    public function post_info()
     {
            $username=Input::get('username');
            $email= Input::get('email');
-           $contact= Input::get('contact');
+           $contact= Input::get('phone');
            $address= Input::get('address');
            $name= Input::get('name'); 
 
-        DB::table('metausers')where('username',$username)->update(['username' => $username, 'name' => $name,'address' => $address,'contact' => $contact,'email' => $email]);
+        DB::table('metausers')->where('username',$username)->update(['username' => $username, 'name' => $name,'address' => $address,'contact' => $contact,'email' => $email]);
        
 
-        return "Data Inserted";
+        return "Data Updated";
     }
    
 }
