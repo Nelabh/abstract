@@ -5,6 +5,7 @@ use Input;
 use DB;
 use Mail;
 use Views;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -15,18 +16,34 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function home()
     {
+        if(\Auth::check())
+      {
     	return \View::make('testing.wel');
+
+        }
+        else 
+        {
+            return Redirect::to('/auth/login'); 
+        }
     }
     public function info()
     {
-        $username="test1";
+      if(\Auth::check())
+      {   
+        $email = \Auth::user()->email;
 
-        $name = DB::table('metausers')->where('username',$username)->pluck('name');
-        $address = DB::table('metausers')->where('username',$username)->pluck('address');
-        $contact = DB::table('metausers')->where('username',$username)->pluck('contact');
-        $email = DB::table('metausers')->where('username',$username)->pluck('email'); 
+        $name = DB::table('metausers')->where('email',$email)->pluck('name');
+        $address = DB::table('metausers')->where('email',$email)->pluck('address');
+        $contact = DB::table('metausers')->where('email',$email)->pluck('contact');
+        $username = DB::table('metausers')->where('email',$email)->pluck('username'); 
          return \View::make('testing.reg',['name'=> $name,'address'=> $address,'contact'=> $contact, 'email'=> $email,'username'=>$username]);
+   }
+   else 
+   {
+    return Redirect::to('/');
+   }
     }
+
 
     public function pro_detail()
     {
@@ -36,19 +53,25 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     public function request() 
     {
     	//$all = Input::all();
+        $email=\Auth::user()->email;
     	$quantity = Input::get('qty');
     	$product = Input::get('product');
     	$description = Input::get('description');
     	$sample = Input::get('sample');
     	$frequency = Input::get('frequency');
     	$num=0;
+        $name = DB::table('metausers')->where('email',$email)->pluck('name');
+        $address = DB::table('metausers')->where('email',$email)->pluck('address');
+        $contact = DB::table('metausers')->where('email',$email)->pluck('contact');
+        $username = DB::table('metausers')->where('email',$email)->pluck('username'); 
+        
         
 foreach($quantity as $quan) {
    $num++;
 	}
     $text="";
      $text.="Dear vKulp Sales Team,<br/>";
-     $text.="The order has been placed by Username of Buyer with following specifications:";
+     $text.="The order has been placed by ".$username." with following specifications:";
     for($prod = 0 ; $prod < $num ; $prod++)
     {
        
@@ -92,15 +115,15 @@ foreach($quantity as $quan) {
         }
        
         
-         DB::table('product')->insert(['product' => $product[$prod], 'description' => $description[$prod],'quantity' => $quantity[$prod],'frequency' => $frequency[$prod],'sample' => $test]);
+       //  DB::table('product')->insert(['product' => $product[$prod], 'description' => $description[$prod],'quantity' => $quantity[$prod],'frequency' => $frequency[$prod],'sample' => $test]);
 
     }
          $text.="<h2>Buyer Details are as follows:</h2><br/>";
-        $text.="Name of the Buyer: Name from Login Details<br/>";
-        $text.="Name of the Hotel: Company’s Name from Login Details <br/>";
-        $text.="Email id: email id from Login Details  <br/>";
-        $text.="Phone No.: Ph no. from Login Details   <br/>";
-        $text.="Address: Address from BuyerDetailsPage    <br/>";
+        $text.="Name of the Buyer: ".$name."<br/>";
+        $text.="Name of the Hotel: ".$username." <br/>";
+        $text.="Email id: ".$email."  <br/>";
+        $text.="Phone No.: ".$contact."   <br/>";
+        $text.="Address: ".$address."    <br/>";
         $text.="Please complete the Order within 48-hours.<br/>Regards,<br/>";
 
 	 Mail::send(['html'=>'testing.mail'], array('text'=>$text), function ($m) {
@@ -115,12 +138,8 @@ foreach($quantity as $quan) {
     }
      public function insert_meta()
     {
-        DB::table('metausers')->insert(['username' => 'test1', 'name' => 'tester1','address' => 'vkulp tester1','contact' => '999999999','email' => 'test1@test.com','password' => 'testing1']);
-        DB::table('metausers')->insert(['username' => 'test2', 'name' => 'tester2','address' => 'vkulp tester2','contact' => '999999999','email' => 'test2@test.com','password' => 'testing2']);
-        DB::table('metausers')->insert(['username' => 'test3', 'name' => 'tester3','address' => 'vkulp tester3','contact' => '999999999','email' => 'test3@test.com','password' => 'testing3']);
-        DB::table('metausers')->insert(['username' => 'test4', 'name' => 'tester4','address' => 'vkulp tester4','contact' => '999999999','email' => 'test4@test.com','password' => 'testing4']);
-        DB::table('metausers')->insert(['username' => 'test5', 'name' => 'tester5','address' => 'vkulp tester5','contact' => '999999999','email' => 'test5@test.com','password' => 'testing5']);
-
+        DB::table('metausers')->insert(['username' => 'nelabh', 'name' => 'Nelabh Kotiya','address' => 'XYZ, xyz,xyz,xyz','contact' => '999999999','email' => 'nelabh@test.com','password' => 'nelabh']);
+        
         return "Data Inserted";
     }
     public function post_info()

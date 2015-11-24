@@ -21,7 +21,7 @@ $(function() {
 
         
         $('#addScnt').click(function() {
-                $("#entity").append('<tr id="entity"><td><input type ="text" name="product[]" placeholder="Enter Product" required></td><td><input type ="text" name="description[]" placeholder="Enter Its Description" required></td><td><input type ="text" name="qty[]" placeholder="Enter Quantity" required></td><td><select name="frequency[]"><option value="0">Once in 7 Days</option><option value="1">Once in 15 Days</option><option value="2">Once in 30 Days</option></select></td><td><input type="Checkbox" name="sample[]" value="'+i+'""></td></tr>');
+                $("#entity").append('<tr id="entity"><td><input type ="text" name="product[]" placeholder="Enter Product" required></td><td><input type ="text" name="description[]" placeholder="Enter Its Description" required></td><td><input type ="text" name="qty[]" placeholder="Enter Quantity" required></td><td><select name="frequency[]"><option value="0" selected >Once in 7 Days</option><option value="1">Once in 15 Days</option><option value="2">Once in 30 Days</option></select></td><td><input type="Checkbox" name="sample[]" value="'+i+'""></td></tr>');
                 i++;
             
                
@@ -93,7 +93,7 @@ $(function() {
               <td><input type ="text" name="description[]" placeholder="Enter Its Description" required></td>
               <td><input type ="text" name="qty[]" placeholder="Enter Quantity" required></td>
               <td><select name="frequency[]">
-  <option value="0">Once in 7 Days</option>
+  <option value="0" selected >Once in 7 Days</option>
   <option value="1">Once in 15 Days</option>
   <option value="2">Once in 30 Days</option>
   </select></td>
