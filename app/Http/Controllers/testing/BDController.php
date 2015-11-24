@@ -19,7 +19,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     }
     public function info()
     {
-        return \View::make('testing.reg');
+        $username="test1";
+
+        $name = DB::table('metausers')->where('username',$username)->pluck('name');
+        $address = DB::table('metausers')->where('username',$username)->pluck('address');
+        $contact = DB::table('metausers')->where('username',$username)->pluck('contact');
+        $email = DB::table('metausers')->where('username',$username)->pluck('email'); 
+         return \View::make('testing.reg',['name'=> $name,'address'=> $address,'contact'=> $contact, 'email'=> $email,'username'=>$username]);
     }
 
     public function pro_detail()
@@ -27,7 +33,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
         return \View::make('testing.detail');
     }
 
-    public function request()
+    public function request() 
     {
     	//$all = Input::all();
     	$quantity = Input::get('qty');
@@ -82,4 +88,28 @@ foreach($quantity as $quan) {
 	
     		return $text;
     }
+     public function insert_meta()
+    {
+        DB::table('metausers')->insert(['username' => 'test1', 'name' => 'tester1','address' => 'vkulp tester1','contact' => '999999999','email' => 'test1@test.com','password' => 'testing1']);
+        DB::table('metausers')->insert(['username' => 'test2', 'name' => 'tester2','address' => 'vkulp tester2','contact' => '999999999','email' => 'test2@test.com','password' => 'testing2']);
+        DB::table('metausers')->insert(['username' => 'test3', 'name' => 'tester3','address' => 'vkulp tester3','contact' => '999999999','email' => 'test3@test.com','password' => 'testing3']);
+        DB::table('metausers')->insert(['username' => 'test4', 'name' => 'tester4','address' => 'vkulp tester4','contact' => '999999999','email' => 'test4@test.com','password' => 'testing4']);
+        DB::table('metausers')->insert(['username' => 'test5', 'name' => 'tester5','address' => 'vkulp tester5','contact' => '999999999','email' => 'test5@test.com','password' => 'testing5']);
+
+        return "Data Inserted";
+    }
+    public function insert_meta()
+    {
+           $username=Input::get('username');
+           $email= Input::get('email');
+           $contact= Input::get('contact');
+           $address= Input::get('address');
+           $name= Input::get('name'); 
+
+        DB::table('metausers')where('username',$username)->update(['username' => $username, 'name' => $name,'address' => $address,'contact' => $contact,'email' => $email]);
+       
+
+        return "Data Inserted";
+    }
+   
 }

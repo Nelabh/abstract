@@ -15,3 +15,5 @@ Route::get('buyer',array( 'as'=>'bdc','uses'=>'testing\BDController@home'));
 Route::post('request',array( 'before'=>'csrf','uses'=>'testing\BDController@request'));
 Route::get('information',array( 'as'=>'info','uses'=>'testing\BDController@info'));
 Route::get('detail/{id}',array( 'as'=>'pro_detail','uses'=>'testing\ProductController@index'));
+Route::get('insert_meta',array( 'as'=>'insert','uses'=>'testing\BDController@insert_meta'));
+Route::post('post_info',array( 'before'=>'csrf','uses'=>'testing\BDController@post_info'));

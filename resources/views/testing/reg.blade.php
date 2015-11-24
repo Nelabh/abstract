@@ -60,30 +60,26 @@
       	      <div class="col-md-6">
                         {!! Form::open(['url','user/info']) !!}
                         <div class="form-group">
-                            {!! Form::text('name', Input::old('name'), ['class'=>'form-control input-lg','placeholder'=>'Full Name']) !!}
+                            {!! Form::text('name', $name, ['class'=>'form-control input-lg','placeholder'=>'Full Name']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::email('email', Input::old('email'), ['class'=>'form-control input-lg','placeholder'=>'Your Email ID']) !!}
+                            {!! Form::email('email',$email, ['class'=>'form-control input-lg','placeholder'=>'Your Email ID']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::text('username', Input::old('username'), ['class'=>'form-control input-lg','placeholder'=>'Company Name']) !!}
+                            {!! Form::text('username', $username, ['class'=>'form-control input-lg','placeholder'=>'Company Name']) !!}
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
+                      
                                 <div class="form-group">
-                                    {!! Form::text('address',Input::old('address'), ['class'=>'form-control
+                                    {!! Form::text('address',$address, ['class'=>'form-control
                                     input-lg','placeholder'=>'Address']) !!}
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                           </div>
-                            </div>
-                        </div>
+                           
+                            
+                      
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">+91-</span>
-                                {!! Form::text('phone', Input::old('phone'), ['class'=>'form-control
+                                {!! Form::text('phone',$contact, ['class'=>'form-control
                                 input-lg','placeholder'=>'Phone Number','aria-describedby' => 'basic-addon1']) !!}
                             </div>
                         </div>
