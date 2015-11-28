@@ -128,7 +128,7 @@ foreach($quantity as $quan) {
 
 	 Mail::send(['html'=>'testing.mail'], array('text'=>$text), function ($m) {
             $m->from('contact@vkulp.com');
-            $m->to('pramilabharti99@gmail.com', 'Pramila')->subject('Order Placed by Buyer Name');
+            $m->to('pramilabharti99@gmail.com', 'Pramila')->subject('Order Placed by '.$username.'');
         });
 
 	
