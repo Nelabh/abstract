@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>form</title>
+<title>Buyer's Information</title>
 <!-- Bootstrap core CSS -->
 <link href="{{URL::asset('testing/css/bootstrap.css')}}" rel="stylesheet"/>
 <link href="{{URL::asset('testing/css/style.css')}}" rel="stylesheet" type="text/css" />
@@ -25,7 +25,9 @@
 	<div class="row">
 		<div class="col-md-12 nav_outer">
 			<div class="col-md-2 logo_outer">
+				<a href="{{URL::asset('/')}}">
 			<img src="{{URL::asset('testing/img/logo.png')}}" class="img-responsive">
+		</a>
 			</div>
 			<div class="col-md-7 search_barouter">
 			<div class="col-md-12 input-group inputdiv">
@@ -33,8 +35,7 @@
 			</div>
 			</div>
 			<div class="col-md-3 btnlogin_outer">
-			<div class="col-md-6 col-md-offset-1"><div class="col-md-9 btn btn-default headbtn">Log in</div></div>
-			<div class="col-md-5 signouter"><div class="col-md-12 btn btn-default headbtn">Sign Up</div></div>
+				<a href="{{URL::asset('/auth/logout')}}"><div class="col-md-5 signouter"><div class="col-md-12 btn btn-default headbtn">LOGOUT</div></div></a>
 			</div>
 			</div>
 			</div>
@@ -46,7 +47,7 @@
 		<div class="col-md-10 getbutton">
 		</div>
 			<div class="col-md-2 getbutton">
-				<button type="button" class="col-md-10 col-md-offset-2 get_quotations">Get Quotations</button>
+				<a type="button" class="col-md-10 col-md-offset-2 get_quotations" href="{{URL::asset('/buyer')}}"> Go to:<br>Buyer's Dashboard</a>
 		</div>
 		</div>
 		</div>
@@ -68,21 +69,53 @@
                         <div class="form-group">
                             {!! Form::text('username', $username, ['class'=>'form-control input-lg','placeholder'=>'Company Name']) !!}
                         </div>
-                      
-                                <div class="form-group">
-                                    {!! Form::text('address',$address, ['class'=>'form-control
-                                    input-lg','placeholder'=>'Address']) !!}
-                                </div>
-                           
-                            
-                      
-                        <div class="form-group">
+                      <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">+91-</span>
                                 {!! Form::text('phone',$contact, ['class'=>'form-control
                                 input-lg','placeholder'=>'Phone Number','aria-describedby' => 'basic-addon1']) !!}
                             </div>
                         </div>
+                                <div class="form-group">
+                                    {!! Form::text('add1',$add1, ['class'=>'form-control
+                                    input-lg','placeholder'=>'Address Line 1']) !!}
+                                </div>
+                           
+                           <div class="form-group">
+                                    {!! Form::text('add2',$add2, ['class'=>'form-control
+                                    input-lg','placeholder'=>'Address line 2']) !!}
+                                </div>
+                            
+                      
+                      <div class="row">
+                      	<div class="col-md-6">
+                      	 <div class="form-group">
+                                    {!! Form::text('city',$city, ['class'=>'form-control
+                                    input-lg','placeholder'=>'City']) !!}
+                                </div>
+                                </div>
+
+                           
+                            
+                             	<div class="col-md-6">
+                      	 <div class="form-group">
+                                    {!! Form::text('state',$state, ['class'=>'form-control
+                                    input-lg','placeholder'=>'State']) !!}
+                                </div>
+                                </div>
+                           
+                            </div>
+                            <div class="row">
+                      	<div class="col-md-6">
+                      	 <div class="form-group">
+                                    {!! Form::text('zipcode',$zipcode, ['class'=>'form-control
+                                    input-lg','placeholder'=>'Zipcode']) !!}
+                                </div>
+                                </div>
+                                </div>
+
+
+                        
                         <div class="form-group">
                          </div>
                         <div class="form-group">

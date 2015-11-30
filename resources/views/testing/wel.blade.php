@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>form</title>
+<title>Buyer's Dashboard</title>
 <!-- Bootstrap core CSS -->
 <link href="{{URL::asset('testing/css/bootstrap.css')}}" rel="stylesheet"/>
 <link href="{{URL::asset('testing/css/style.css')}}" rel="stylesheet" type="text/css" />
@@ -41,7 +41,9 @@ $(function() {
 	<div class="row">
 		<div class="col-md-12 nav_outer">
 			<div class="col-md-2 logo_outer">
+				<a href="{{URL::asset('/')}}">
 			<img src="{{URL::asset('testing/img/logo.png')}}" class="img-responsive">
+		</a>
 			</div>
 			<div class="col-md-7 search_barouter">
 			<div class="col-md-12 input-group inputdiv">
@@ -49,8 +51,7 @@ $(function() {
 			</div>
 			</div>
 			<div class="col-md-3 btnlogin_outer">
-			<div class="col-md-6 col-md-offset-1"><div class="col-md-9 btn btn-default headbtn">Log in</div></div>
-			<div class="col-md-5 signouter"><div class="col-md-12 btn btn-default headbtn">Sign Up</div></div>
+				<a href="{{URL::asset('/auth/logout')}}"><div class="col-md-5 signouter"><div class="col-md-12 btn btn-default headbtn">LOGOUT</div></div></a>
 			</div>
 			</div>
 			</div>
@@ -62,7 +63,7 @@ $(function() {
 		<div class="col-md-10 getbutton">
 		</div>
 			<div class="col-md-2 getbutton">
-				<button type="button" class="col-md-10 col-md-offset-2 get_quotations">Get Quotations</button>
+				<a class="col-md-10 col-md-offset-2 get_quotations" href="{{URL::asset('/home')}}">Go to:<br>Buyer's Information</a>
 		</div>
 		</div>
 		</div>

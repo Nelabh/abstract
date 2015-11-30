@@ -32,15 +32,20 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
       {   
         $email = \Auth::user()->email;
 
-        $name = DB::table('metausers')->where('email',$email)->pluck('name');
-        $address = DB::table('metausers')->where('email',$email)->pluck('address');
-        $contact = DB::table('metausers')->where('email',$email)->pluck('contact');
-        $username = DB::table('metausers')->where('email',$email)->pluck('username'); 
-         return \View::make('testing.reg',['name'=> $name,'address'=> $address,'contact'=> $contact, 'email'=> $email,'username'=>$username]);
+        $name = DB::table('users')->where('email',$email)->pluck('name');
+        $contact = DB::table('users')->where('email',$email)->pluck('phone');
+        $username = DB::table('users')->where('email',$email)->pluck('username'); 
+        $add1 = DB::table('meta')->where('email',$email)->pluck('address1');
+        $add2 = DB::table('meta')->where('email',$email)->pluck('address2');
+        $city = DB::table('meta')->where('email',$email)->pluck('city');
+        $state = DB::table('meta')->where('email',$email)->pluck('state');
+        $zip = DB::table('meta')->where('email',$email)->pluck('zipcode');
+        $address= ''.$add1.','.$add2.','.$city.','.$state.'-'.$zip;
+ return \View::make('testing.reg',['name'=> $name,'add1'=> $add1, 'add2' => $add2,'city' => $city,'state' => $state,'zipcode' => $zip,'contact'=> $contact, 'email'=> $email,'username'=>$username]);
    }
    else 
    {
-    return Redirect::to('/');
+    return Redirect::to('/auth/login');
    }
     }
 
@@ -60,10 +65,18 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     	$sample = Input::get('sample');
     	$frequency = Input::get('frequency');
     	$num=0;
-        $name = DB::table('metausers')->where('email',$email)->pluck('name');
-        $address = DB::table('metausers')->where('email',$email)->pluck('address');
-        $contact = DB::table('metausers')->where('email',$email)->pluck('contact');
-        $username = DB::table('metausers')->where('email',$email)->pluck('username'); 
+        $name = DB::table('users')->where('email',$email)->pluck('name');
+        $contact = DB::table('users')->where('email',$email)->pluck('phone');
+        $username = DB::table('users')->where('email',$email)->pluck('username'); 
+        $add1 = DB::table('meta')->where('email',$email)->pluck('address1');
+        $add2 = DB::table('meta')->where('email',$email)->pluck('address2');
+        $city = DB::table('meta')->where('email',$email)->pluck('city');
+        $state = DB::table('meta')->where('email',$email)->pluck('state');
+        $zip = DB::table('meta')->where('email',$email)->pluck('zipcode');
+        $address= ''.$add1.','.$add2.','.$city.','.$state.'-'.$zip;
+
+
+
         
         
 foreach($quantity as $quan) {
@@ -147,11 +160,21 @@ foreach($quantity as $quan) {
            $username=Input::get('username');
            $email= Input::get('email');
            $contact= Input::get('phone');
-           $address= Input::get('address');
+           $add1= Input::get('add1');
+           $add2= Input::get('add2');
+           $city= Input::get('city');
+           $state= Input::get('state');
+           $zip= Input::get('zipcode');
            $name= Input::get('name'); 
-
-        DB::table('metausers')->where('username',$username)->update(['username' => $username, 'name' => $name,'address' => $address,'contact' => $contact,'email' => $email]);
-       
+$check=DB::table('meta')->where('email',$email)->pluck('email');
+if(!empty($check))
+{
+       DB::table('meta')->where('email',$email)->update(['address1' => $add1, 'address2' => $add2,'city' => $city,'state' => $state,'zipcode' => $zip]);
+}  
+else
+{
+    DB::table('meta')->insert(['email'=>$email,'address1' => $add1, 'address2' => $add2,'city' => $city,'state' => $state,'zipcode' => $zip]);
+}     
 
         return "Data Updated";
     }
