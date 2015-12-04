@@ -14,10 +14,16 @@
 
 <script src="{{URL::asset('testing/js/bootstrap.js')}}"></script>
 <script src="{{URL::asset('testing/js/jquery.min.js')}}"></script>
+<script>
+function load()
+{
+	setTimeout(function(){window.location = '{{URL::asset("/")}}';}, 5000);
+}</script>   
+
    
 
 </head>
-<body onload="setTimeout(function(){window.location = 'http://www.vkulp.com/';}, 5000)">
+<body onload="load()">
 
 
 <nav class="nav navbar-default navbar nav_wrap">
