@@ -118,10 +118,4 @@ Route::post('post_info',array( 'before'=>'csrf','uses'=>'testing\BDController@po
 Route::get('home',array( 'as'=>'info','uses'=>'testing\BDController@info'));
 Route::get('wait',array( 'as'=>'wait','uses'=>'testing\BDController@wait'));
 Route::get('wait2',array( 'as'=>'wait2','uses'=>'testing\BDController@wait2'));
-Route::post('place_order',array( 'as'=>'place_order','uses'=>'testing\ProductController@place_order'));
-Route::get('req_sample',array( 'as'=>'req_sample','uses'=>'testing\ProductController@req_sample'));
-Route::get('wait_order',array( 'as'=>'wait_order','uses'=>'testing\ProductController@wait_order'));
-Route::get('wait_req',array( 'as'=>'wait_req','uses'=>'testing\ProductController@wait_req'));
-
-
 

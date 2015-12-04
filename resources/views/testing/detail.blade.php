@@ -6,12 +6,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>detail page</title>
+<title>{{	$data[0]->name	}} | vKulp</title>
 <!-- Bootstrap core CSS -->
 <link href="{{URL::asset('testing/b/css/bootstrap.css')}}" rel="stylesheet"/>
 <link href="{{URL::asset('testing/b/css/style.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{URL::asset('testing/b/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
 <link href="{{URL::asset('testing/b/css/responsive-01.css')}}" rel="stylesheet">
+<script>
+function loc()
+{
+	var pin=document.getElementById('pincode').value;
+	if((pin.length==6)&&(!isNaN(pin)))
+	{
+	var spin=pin.substring(0,3);
+	switch(spin)
+	{
+		case '110':
+		case '122':
+		case '201':
+		case '560':
+		alert('The Items will be delivered within 48-hrs of Placing Order.');
+		break;
+		default:
+		alert('vKulp will start servicing in your area soon!');
+
+
+	}
+}
+else
+{
+	alert('Please Enter valid PINCODE');
+}
+}
+</script>
 </head>
 <body>
 <nav class="nav navbar-default navbar nav_wrap">
@@ -32,8 +59,7 @@
 					<label class="togg-inner" for="menu-toggle"><img src="{{URL::asset('testing/b/img/menu.png')}}" /></label>
 					<input type="checkbox" id="menu-toggle"/>
 					<ul id="menu">
-					  <li><a href="#">Log in</a></li>
-					  <li><a href="#">Sign Up</a></li>
+					  
 						
 						
 						
@@ -54,9 +80,7 @@
 				
 				
 			
-			<div class="col-md-6 col-md-offset-1 headbtnlog"><div class="col-md-9 btn btn-default headbtn head-btn-001">Log in</div></div>
-			<div class="col-md-5 signouter"><div class="col-md-12 btn btn-default  headbtn">Sign Up</div></div>
-			
+			<a href="{{URL::asset('/auth/logout')}}"><div class="col-md-6 col-md-offset-1 headbtnlog"><div class="col-md-9 btn btn-default headbtn head-btn-001">LOGOUT</div></div></a>
 			
 			
 			</div>
@@ -132,8 +156,8 @@
 		</div>
 		<div class="col-md-6 check_content">
 	<div class="col-md-11 input-group checkouter">
-  <input type="text" class="form-control checkinput" placeholder="Recipient's username" aria-describedby="basic-addon2">
-  <span class="input-group-addon addcheck" id="basic-addon2 "><a href="#">Check</a></span>
+  <input id="pincode" type="text" class="form-control checkinput" placeholder="PINCODE" aria-describedby="basic-addon2">
+  <span class="input-group-addon addcheck" id="basic-addon2 "><a onclick="loc()">Check</a></span>
 	</div>
 		</div>
 		</div>
@@ -167,17 +191,20 @@
 	</div>
 	</div>
 		<div class="col-md-12 skutxt_outer skutxt_mid">
+			{!!Form::open(array('url'=>'place_order', 'method'=>'post' ))!!}
+                    {!!Form::token()!!}
+           	
 	<div class="col-md-6 skutxt">
 	<h4>Select Quality</h4>
 	</div>
 	<div class="col-md-6 sku_quality">
 	<div class="col-md-12 sku_quality_outer">
 <div class="form-group">
-  <select class="form-control sell" id="sel1" placeholder="10">
-    <option>10</option>
-    <option>9</option>
-    <option>8</option>
-    <option>7</option>
+  <select class="form-control sell" name="quantity" id="sel1" placeholder="10">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
    </select>
 </div>
 	</div>
@@ -196,16 +223,17 @@
 	</div>
 		<div class="col-md-12 samlpebtn_outer">
 	<div class="col-md-12 samlpebtn_wrap">
-	 <div class="col-md-12 btn btn-danger dangerbtn">
-PLACE ORDER
+	 <div class="col-md-12 btn btn-danger dangerbtn"><button type="submit">
+PLACE ORDER</button>
 	</div>
 	</div>
-	<div class="col-md-12">
+	<a href="{{URL::asset('/req_sample')}}"><div class="col-md-12">
   <div class="col-md-12 btn btn-default askbtn">
 	ASK FOR SAMPLE
 	</div>
+	</div></a>
 	</div>
-	</div>
+	</form>
 	</div>
 
 	</div>
