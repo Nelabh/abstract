@@ -17,7 +17,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     
     public function index($id)
     {
-        $data=DB::table('product')->where('id',$id)->pluck('product');
+        $data=DB::table('products')->where('id',$id)->get();
+        //dd($data[0]->name);
+
         return \View::make('testing.detail',['data'=>$data]);
     }
 

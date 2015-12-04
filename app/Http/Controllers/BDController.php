@@ -26,6 +26,30 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
             return Redirect::to('/auth/login'); 
         }
     }
+     public function wait()
+    {
+        if(\Auth::check())
+      {
+        return \View::make('testing.wait');
+
+        }
+        else 
+        {
+            return Redirect::to('/auth/login'); 
+        }
+    }
+     public function wait2()
+    {
+        if(\Auth::check())
+      {
+        return \View::make('testing.wait2');
+
+        }
+        else 
+        {
+            return Redirect::to('/auth/login'); 
+        }
+    }
     public function info()
     {
       if(\Auth::check())
@@ -57,7 +81,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
     public function request() 
     {
-    	//$all = Input::all();
+    
         $email=\Auth::user()->email;
     	$quantity = Input::get('qty');
     	$product = Input::get('product');
@@ -74,7 +98,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
         $state = DB::table('meta')->where('email',$email)->pluck('state');
         $zip = DB::table('meta')->where('email',$email)->pluck('zipcode');
         $address= ''.$add1.','.$add2.','.$city.','.$state.'-'.$zip;
-
+      
 foreach($quantity as $quan) {
    $num++;
 	}
@@ -83,6 +107,8 @@ foreach($quantity as $quan) {
      $text.="The order has been placed by ".$username." with following specifications:";
     for($prod = 0 ; $prod < $num ; $prod++)
     {
+       
+      
         $text.="<h2>Product: ". strval($prod + 1)."</h2><br/>";
         $text.="Name: ".$product[$prod]."<br/>";
         $text.="Description: ".$description[$prod]."<br/>";
@@ -90,14 +116,17 @@ foreach($quantity as $quan) {
         if($frequency[$prod]=="0")
         {
              $text.="Frequency Of Purchase:Once in 7 Days <br/>";
+       
         }
         else   if($frequency[$prod]=="1")
         {
              $text.="Frequency Of Purchase:Once in 15 Days <br/>";
+       
         }
         else  if($frequency[$prod]=="2")
         {
              $text.="Frequency Of Purchase:Once in 30 Days <br/>";
+       
         }
         if(!empty($sample))
         {
@@ -118,31 +147,30 @@ foreach($quantity as $quan) {
             $test="No";
         }
        
-      }
-        $text.="<h2>Buyer Details are as follows:</h2><br/>";
+        
+       //  DB::table('product')->insert(['product' => $product[$prod], 'description' => $description[$prod],'quantity' => $quantity[$prod],'frequency' => $frequency[$prod],'sample' => $test]);
+
+    }
+         $text.="<h2>Buyer Details are as follows:</h2><br/>";
         $text.="Name of the Buyer: ".$name."<br/>";
         $text.="Name of the Hotel: ".$username." <br/>";
         $text.="Email id: ".$email."  <br/>";
         $text.="Phone No.: ".$contact."   <br/>";
         $text.="Address: ".$address."    <br/>";
         $text.="Please complete the Order within 48-hours.<br/>Regards,<br/>";
-
-	 Mail::send(['html'=>'testing.mail'], array('text'=>$text), function ($m) {
+$subj="Order Placed by ".$username;
+	 Mail::send(['html'=>'testing.mail'], array('text'=>$text), function ($m) use ($subj) {
             $m->from('contact@vkulp.com');
-            $m->to('pramilabharti99@gmail.com', 'Pramila')->subject('Order Placed by '.$username.'');
+            $m->to('buyrequest@vkulp.com', 'buyrequest')->subject($subj);
         });
 
 	
 
 	
-    		return $text;
+       return Redirect::to('/wait2');
+    		
     }
-     public function insert_meta()
-    {
-        DB::table('metausers')->insert(['username' => 'nelabh', 'name' => 'Nelabh Kotiya','address' => 'XYZ, xyz,xyz,xyz','contact' => '999999999','email' => 'nelabh@test.com','password' => 'nelabh']);
-        
-        return "Data Inserted";
-    }
+     
     public function post_info()
     {
            $username=Input::get('username');
@@ -164,7 +192,7 @@ else
     DB::table('meta')->insert(['email'=>$email,'address1' => $add1, 'address2' => $add2,'city' => $city,'state' => $state,'zipcode' => $zip]);
 }     
 
-        return "Data Updated";
+       return Redirect::to('/wait');
     }
    
 }

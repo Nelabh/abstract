@@ -182,7 +182,7 @@ procurement process for hospitality industry. </p>
 	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
-	<a href="#">Home</a>
+	<a href="{{URL::asset('/')}}">Home</a>
 	</div>
 	</div>
 		<div class="col-md-12 sociallink_outer">
@@ -191,7 +191,7 @@ procurement process for hospitality industry. </p>
 	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
-	<a href="#">About</a>
+	<a href="{{URL::asset('/#about')}}">About</a>
 	</div>
 	</div>
 		<div class="col-md-12 sociallink_outer">
@@ -200,7 +200,7 @@ procurement process for hospitality industry. </p>
 	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
-	<a href="#">Blog</a>
+	<a href="{{URL::asset('/#blog')}}">Blog</a>
 	</div>
 	</div>
 		<div class="col-md-12 sociallink_outer">
@@ -209,7 +209,7 @@ procurement process for hospitality industry. </p>
 	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
-	<a href="#">team</a>
+	<a href="{{URL::asset('/#team')}}">team</a>
 	</div>
 	</div>
 		<div class="col-md-12 sociallink_outer">
@@ -218,7 +218,7 @@ procurement process for hospitality industry. </p>
 	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
-	<a href="#">Privecy Policy</a>
+	<a href="{{URL::asset('/terms')}}">Privacy Policy</a>
 	</div>
 	</div>
 			<div class="col-md-12 sociallink_outer">

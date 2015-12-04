@@ -108,7 +108,7 @@
 		</div>
 		<div class="col-md-7 detailpro_right">
 		<div class="col-md-12 detailpro_righth1">
-		<h3>{{	$data	}}</h3>
+		<h3>{{	$data[0]->name	}}</h3>
 		<div class="col-md-12 detailpro_righth1">
 		<div class="col-md-4 detailpro_rightpara">
 		<p>Color black</p>
@@ -141,7 +141,7 @@
 		<div class="col-md-12 placeorder_wrap">
 	<div class="col-md-6 placeorder_outer">
 	<div class="col-md-12 placeorder_headbg">
-	<h4>Rs 6720 per piece</h4>
+	<h4>&#8377; {{	$data[0]->max_retail_price	}} per piece</h4>
 	</div>
 	<div class="col-md-12 skutxt_outer">
 	<div class="col-md-3 skutxt">
@@ -259,10 +259,9 @@ PLACE ORDER
 			<div class="row">
 		<div class="col-md-12 feature__outer">
 		<div class="col-md-12 feature__wrap">
-		<h3>Key Features of Royal Oak Metal Dining Set</h3>
+		<h3>Key Features of {{	$data[0]->name	}}</h3>
 		<ul>
-		<li>Made of Wood and metal Four Seater Dining Set. Table has Tempered Glass top. Table has a Shelf below the top. Chair has brown seat upholestery.
-Chair’s backrest has slatted Design.</li>
+		<li>{{	$data[0]->description	}}</li>
 		</ul>
 </div>
 </div>
@@ -283,7 +282,7 @@ Chair’s backrest has slatted Design.</li>
 			<div class="row">
 		<div class="col-md-12 feature__outer">
 		<div class="col-md-12 specification__wrap">
-		<div class="col-md-12 specification__head"><h3 class="col-md-12 specification__headtxt">Specification of Royal Oak Metal Dining Set</h3><div>
+		<div class="col-md-12 specification__head"><h3 class="col-md-12 specification__headtxt">Specification of {{	$data[0]->name	}}</h3><div>
 		<div class="col-md-12 specification__head"><h4 class="col-md-12 specification__headtxt">In the Box</h4></div>
 		<div class="col-md-12 specification__headtxtbot"><div class="col-md-3 specification__head"></div><h5 class="col-md-6 specification__headtxt">One Dining</h5></div>
 		</div>
@@ -402,53 +401,53 @@ procurement process for hospitality industry. </p>
 			</div>
 			</div>
 		</div>
-		<div class="col-md-4 footer_right">
+	<div class="col-md-4 footer_right">
 		<h3>Quick Link</h3>
 		<div class="col-md-5 footer_border">
 		<hr>
 		</div>
 		<div class="col-md-12 sociallink_outer">
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('testing/b/img/arrow.png')}}">
+	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
-	<a href="#">Home</a>
+	<a href="{{URL::asset('/')}}">Home</a>
 	</div>
 	</div>
 		<div class="col-md-12 sociallink_outer">
 		<hr>
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('testing/b/img/arrow.png')}}">
+	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
-	<a href="#">About</a>
+	<a href="{{URL::asset('/#about')}}">About</a>
 	</div>
 	</div>
 		<div class="col-md-12 sociallink_outer">
 		<hr>
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('testing/b/img/arrow.png')}}">
+	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
-	<a href="#">Blog</a>
+	<a href="{{URL::asset('/#blog')}}">Blog</a>
 	</div>
 	</div>
 		<div class="col-md-12 sociallink_outer">
 		<hr>
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('testing/b/img/arrow.png')}}">
+	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
-	<a href="#">team</a>
+	<a href="{{URL::asset('/#team')}}">team</a>
 	</div>
 	</div>
 		<div class="col-md-12 sociallink_outer">
 		<hr>
 		<div class="col-md-1 sociallink_outer">
-	<img src="{{URL::asset('testing/b/img/arrow.png')}}">
+	<img src="{{URL::asset('testing/img/arrow.png')}}">
 	</div>
 		<div class="col-md-10 sociallink_outertxt">
-	<a href="#">Privecy Policy</a>
+	<a href="{{URL::asset('/terms')}}">Privacy Policy</a>
 	</div>
 	</div>
 			<div class="col-md-12 sociallink_outer">

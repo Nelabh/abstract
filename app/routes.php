@@ -57,7 +57,7 @@ Route::get('/terms','HomeController@terms');
 Route::get('/blog','HomeController@blog');
 Route::get('/resend','HomeController@resend');
 Route::post('/resend','HomeController@mail_vc');
-Route::get('/home','UserController@index');
+//Route::get('/home','UserController@index');
 Route::get('/buy-request','HomeController@buy_request');
 Route::post('/buy-request','HomeController@store_request');
 Route::post('/ajaxGetSubUnits','HomeController@subunits');
@@ -115,4 +115,7 @@ Route::post('request',array( 'before'=>'csrf','uses'=>'testing\BDController@requ
 Route::get('detail/{id}',array( 'as'=>'pro_detail','uses'=>'testing\ProductController@index'));
 Route::get('insert_meta',array( 'as'=>'insert','uses'=>'testing\BDController@insert_meta'));
 Route::post('post_info',array( 'before'=>'csrf','uses'=>'testing\BDController@post_info'));
-Route::get('information',array( 'as'=>'info','uses'=>'testing\BDController@info'));
+Route::get('home',array( 'as'=>'info','uses'=>'testing\BDController@info'));
+Route::get('wait',array( 'as'=>'wait','uses'=>'testing\BDController@wait'));
+Route::get('wait2',array( 'as'=>'wait2','uses'=>'testing\BDController@wait2'));
+
