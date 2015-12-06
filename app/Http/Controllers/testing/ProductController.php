@@ -23,6 +23,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
       {
      
         $data=DB::table('products')->where('id',$id)->get();
+        $data[0]->image='http://vkulp.com/home-theme/img/products/'.$data[0]->image;
+       // dd($data);
         Session::put('prod_id', $id);
        
         return \View::make('testing.detail',['data'=>$data]);

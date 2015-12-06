@@ -121,13 +121,9 @@ else
 		<div class="row">
 		<div class="col-md-12 detailpro_outer">
 		<div class="col-md-5 detailpro_left">
-		<div class="col-md-12 detailpro_inner1"><a href="#"><img src="{{URL::asset('testing/b/img/detailproimg.png')}}" class="img-responsive"></a>
+		<div class="col-md-12 detailpro_inner1"><a href="#"><img src="{{$data[0]->image}}" class="img-responsive" height="400" width="400"></a>
 		</div>
 		<div class="col-md-12 detailpro_inner2">
-		<div class="col-md-3 detailproimgdiv"><a href="#"><img src="{{URL::asset('testing/b/img/lube1.png')}}" class="img-responsive"></a></div>
-		<div class="col-md-3 detailproimgdiv"><a href="#"><img src="{{URL::asset('testing/b/img/lube1.png')}}" class="img-responsive"></a></div>
-		<div class="col-md-3 detailproimgdiv"><img src="{{URL::asset('testing/b/img/lube1.png')}}" class="img-responsive"></a></div>
-		<div class="col-md-3 detailproimgdiv"><img src="{{URL::asset('testing/b/img/lube1.png')}}" class="img-responsive"></a></div>
 		</div>
 		</div>
 		<div class="col-md-7 detailpro_right">
