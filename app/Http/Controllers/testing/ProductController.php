@@ -5,6 +5,7 @@ use Input;
 use DB;
 use Mail;
 use Views;
+use DB;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Foundation\Bus\DispatchesJobs;

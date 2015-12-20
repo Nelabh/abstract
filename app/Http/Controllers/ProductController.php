@@ -15,7 +15,7 @@ use App\SubSubCategory;
 use App\SubSubCategoryOption;
 use App\SubUnit;
 use Illuminate\Http\Request;
-
+use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -84,10 +84,9 @@ class ProductController extends Controller
             'package_unit' => 'sometimes|max:255',
             'min_order_quantity' => 'sometimes|integer',
             'min_order_unit'=>'required',
-            'sku_small' => 'sometimes|max:255',
-            'sku_medium' => 'sometimes|max:255',
-            'sku_large' => 'sometimes|max:255',
+            //'sustainability_initiatives' => 'sometimes|max:255',
             'active' => 'required|in:0,1',
+			'sku_small' => 'sometimes|integer'
         ]);
         $input = $request->all();
         if (Input::hasFile('image'))
@@ -146,6 +145,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+		
         $user_id = Auth::user()->id;
         $product = Product::where('id','=',$id)->where('user_id','=',$user_id)->first();
         $this->validate($request, [
@@ -162,12 +162,12 @@ class ProductController extends Controller
             'package_unit' => 'sometimes|max:255',
             'min_order_quantity' => 'sometimes|integer',
             'min_order_unit'=>'required',
-           'sku_small' => 'sometimes|max:255',
-            'sku_medium' => 'sometimes|max:255',
-            'sku_large' => 'sometimes|max:255',
+            //'sustainability_initiatives' => 'sometimes|max:255',
             'active' => 'required|in:0,1',
+			'sku_small' => 'sometimes|integer',
         ]);
         $input = $request->all();
+		//var_dump( $input);die();
         if (Input::hasFile('image'))
         {
             if (Input::file('image')->isValid())
@@ -209,6 +209,19 @@ class ProductController extends Controller
         $subcategories = SubSubCategory::where('sub_category_id','=',$category_id)->lists('name','id');
         return $subcategories;
     }
+	public function submitFeedback(){
+		 $user_id = Input::get('user_id');
+		 $product_id = Input::get('product_id');
+		 $feedback = Input::get('feedback');
+		
+		DB::table('product_meta')->insert(
+			['user_id' => $user_id , 'product_id' => $product_id,  'feedback' => $feedback ]
+		);
+		 
+	
+		
+	}
+	
 public function import(Request $request)
     {
         $sucessflag=0;
