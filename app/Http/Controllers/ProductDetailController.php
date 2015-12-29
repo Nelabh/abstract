@@ -26,7 +26,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 		
 		$catarray=array();
         $data=DB::table('products')->where('id',$id)->get();
-        $data[0]->image='http://ec2-52-26-112-95.us-west-2.compute.amazonaws.com/home-theme/img/products/'.$data[0]->image;
+        //$data[0]->image='http://ec2-52-26-112-95.us-west-2.compute.amazonaws.com/home-theme/img/products/'.$data[0]->image;
         $parentproductid=$data[0]->parent_product_id;
         $parentproduct=DB::table('parent_products')->where('id',$parentproductid)->get();
         //dd($parentproduct);

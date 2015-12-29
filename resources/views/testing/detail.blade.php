@@ -119,7 +119,7 @@
             <div class="row">
                 <div class="col-md-12 detailpro_outer">
                     <div class="col-md-5 detailpro_left">
-                        <div class="col-md-12 detailpro_inner1"><a href="#"><img src="{{$data[0]->image}}" class="img-responsive" height="400" width="400"></a>
+                        <div class="col-md-12 detailpro_inner1"><a href="#"><img src="{{URL::asset('home-theme/img/products/')}}/{{$data[0]->image}}" class="img-responsive" height="400" width="400"></a>
                         </div>
                         <div class="col-md-12 detailpro_inner2">
                         </div>

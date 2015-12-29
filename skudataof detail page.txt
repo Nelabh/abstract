@@ -1,0 +1,33 @@
+
+                                @if($data[0]->sku_small || $data[0]->sku_medium || $data[0]->sku_large)
+                                    <div class="col-md-12 skutxt_outer">
+                                        <div class="col-md-3 skutxt">
+                                            <h4>SKU</h4>
+                                        </div>
+                                        <div class="col-md-9 skudivs">
+                                            <div class="col-md-12 btn_wrapsku">
+
+                                                @if($data[0]->sku_small)
+                                                    <div class="radio">
+                                                        {!! Form::radio( 'sku_option' , $data[0]->sku_small , null , [ 'id'=>'sku_small' ] ) !!}
+                                                        {!! Form::label( 'sku_small' , 'Small: ' ) !!} {{  $data[0]->sku_small  }}
+                                                    </div>
+                                                @endif
+
+                                                @if($data[0]->sku_medium )
+                                                    <div class="radio">
+                                                        {!! Form::radio( 'sku_option' , $data[0]->sku_medium , null , [ 'id'=>'sku_medium' ] ) !!}
+                                                        {!! Form::label( 'sku_medium' , 'Medium: ' ) !!} {{  $data[0]->sku_medium  }}
+                                                    </div>
+                                                @endif
+
+                                                @if($data[0]->sku_large)
+                                                    <div class="radio">
+                                                        {!! Form::radio( 'sku_option' , $data[0]->sku_large , null , [ 'id'=>'sku_large' ] ) !!}
+                                                        {!! Form::label( 'sku_large' , 'Large: ' ) !!} {{  $data[0]->sku_large  }}
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
