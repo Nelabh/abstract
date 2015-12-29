@@ -290,11 +290,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 feature__outer">
-                    <div class="col-md-12 infohelp__wrap">
+                    <div class="col-md-12 infohelp__wrap" id="infowrap">
                         <div class="col-md-3 infohelp__txt"><p>Was this information Helpful?</p></div>
                         <div class="col-md-2 infohelp__txt2"><span>Yes</span><a id="feedback_yes" href="#"><img src="{{URL::asset('testing/b/img/thumbsup.png')}}"></a></div>
-                        <div class="col-md-2 infohelp__txt2"><span>No</span><a id="feedback_no" href="#"><img src="{{URL::asset('testing/b/img/thumbsdown.png')}}"></a></div>
+                        <div class="col-md-2 infohelp__txt2">
+							<span>No</span><a id="feedback_no" href="#">
+								<img src="{{URL::asset('testing/b/img/thumbsdown.png')}}"></a>
+								<div style="display:none;" id="feedback_no_text"><textarea id="feedback_no_comment">
+								
+								</textarea>
+								<input  value="Okay!!!" id="submit_feedback" class="col-md-12 btn btn-danger dangerbtn" type="button" /></div>
+						</div>
+						
                     </div>
+					<div id="feedback_message">
+				    </div>
                 </div>
             </div>
         </div>	
@@ -498,8 +508,27 @@
 				var product_id= $('#product_id').val();
 				var user_id= $('#user_id').val();
 				var feedback = "Yes";
-				$.get("/feedback",{product_id: product_id,user_id: user_id,feedback:feedback}, function(data){
-					alert("Data: " + data);
+                var comment = "no comments"
+				$.get("/feedback",{product_id: product_id,user_id: user_id,feedback:feedback,comment:comment}, function(data){
+					/*.done(function() {*/
+					 $('#infowrap').hide();
+                    $('#feedback_message').html("<p>Thank You For Your Feedback. We Will Get Back To You!!!</p>");
+          /*  			  })*/
+				});
+			});
+			$('#feedback_no').click(function() {
+				$('#feedback_no_text').show();
+			});
+			$('#submit_feedback').click(function() {
+				var product_id= $('#product_id').val();
+				var user_id= $('#user_id').val();
+				var feedback = "No";
+				var comment = $('#feedback_no_comment').val();
+				$.get("/feedback",{product_id: product_id,user_id: user_id,feedback:feedback,comment:comment}, function(data){
+					/*.done(function() {*/
+                        $('#infowrap').hide();
+					$('#feedback_message').html("<p>Thank You For Your Feedback. We Will Get Back To You!!!</p>");
+				 /* })*/
 				});
 			});
         });

@@ -51,6 +51,7 @@ function load()
 		<div class="col-md-10 getbutton">
 		</div>
 			<center><h2>A Sample Has Been Requested For You.<br>
+					Sample will be provided in 72 Hours.<br>
 You will be redirected to the Home in few seconds.</h2></center>
 		</div>
 		</div>

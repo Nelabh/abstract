@@ -122,6 +122,5 @@ Route::post('place_order',array( 'as'=>'place_order','uses'=>'testing\ProductCon
 Route::get('req_sample',array( 'as'=>'req_sample','uses'=>'testing\ProductController@req_sample'));
 Route::get('wait_order',array( 'as'=>'wait_order','uses'=>'testing\ProductController@wait_order'));
 Route::get('wait_req',array( 'as'=>'wait_req','uses'=>'testing\ProductController@wait_req'));
-
-
+Route::get('/feedback','ProductController@submitFeedback');
 

@@ -5,7 +5,6 @@ use Input;
 use DB;
 use Mail;
 use Views;
-use DB;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -22,13 +21,30 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     {
     	 if(\Auth::check())
       {
-     
+		
+		$user_id= \Auth::user()->id;
+		
+		$catarray=array();
         $data=DB::table('products')->where('id',$id)->get();
         $data[0]->image='http://vkulp.com/home-theme/img/products/'.$data[0]->image;
+		$category=DB::table('categories')->where('id',$data[0]->category_id)->get();
+		$catarray['category_name']=$category[0]->name;
+		$catarray['category_slug']=$category[0]->slug;
+		$sub_category=DB::table('sub_categories')->where('id',$data[0]->sub_category_id)->get();
+		$catarray['sub_category_name']=$sub_category[0]->name;
+		$catarray['sub_category_slug']=$sub_category[0]->slug;
+		$sub_sub_category=DB::table('sub_sub_categories')->where('id',$data[0]->sub_sub_category_id)->get();
+		$catarray['sub_sub_category_name']=$sub_sub_category[0]->name;
+		$catarray['sub_sub_category_slug']=$sub_sub_category[0]->slug;
+		
+
+		// $data=DB::table('categories')->where('id',$id)->get();
        // dd($data);
+	   array_push($data,$user_id);
+	   
         Session::put('prod_id', $id);
        
-        return \View::make('testing.detail',['data'=>$data]);
+        return \View::make('testing.detail',['data'=>$data],['categories'=>$catarray]);
 	 }
         else 
         {
