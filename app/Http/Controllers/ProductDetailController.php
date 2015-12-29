@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\testing;
+namespace App\Http\Controllers;
 use Input;
 use DB;
 use Mail;
@@ -26,17 +26,21 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 		
 		$catarray=array();
         $data=DB::table('products')->where('id',$id)->get();
-        $data[0]->image='http://vkulp.com/home-theme/img/products/'.$data[0]->image;
-		$category=DB::table('categories')->where('id',$data[0]->category_id)->get();
+        $data[0]->image='http://ec2-52-26-112-95.us-west-2.compute.amazonaws.com/home-theme/img/products/'.$data[0]->image;
+        $parentproductid=$data[0]->parent_product_id;
+        $parentproduct=DB::table('parent_products')->where('id',$parentproductid)->get();
+        //dd($parentproduct);
+
+		$category=DB::table('categories')->where('id',$parentproduct[0]->category_id)->get();
 		$catarray['category_name']=$category[0]->name;
 		$catarray['category_slug']=$category[0]->slug;
-		$sub_category=DB::table('sub_categories')->where('id',$data[0]->sub_category_id)->get();
+		$sub_category=DB::table('sub_categories')->where('id',$parentproduct[0]->sub_category_id)->get();
 		$catarray['sub_category_name']=$sub_category[0]->name;
 		$catarray['sub_category_slug']=$sub_category[0]->slug;
-		$sub_sub_category=DB::table('sub_sub_categories')->where('id',$data[0]->sub_sub_category_id)->get();
+		$sub_sub_category=DB::table('sub_sub_categories')->where('id',$parentproduct[0]->sub_sub_category_id)->get();
 		$catarray['sub_sub_category_name']=$sub_sub_category[0]->name;
 		$catarray['sub_sub_category_slug']=$sub_sub_category[0]->slug;
-		
+		$categories=$catarray;
 
 		// $data=DB::table('categories')->where('id',$id)->get();
        // dd($data);
@@ -44,7 +48,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	   
         Session::put('prod_id', $id);
        
-        return \View::make('testing.detail',['data'=>$data],['categories'=>$catarray]);
+        return \View::make('product-detail.detail',compact('data','parentproduct','categories'));
 	 }
         else 
         {

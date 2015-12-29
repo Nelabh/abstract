@@ -112,15 +112,15 @@ return "Your Laravel version is ".$laravel::VERSION;
 //Testing Routes
 Route::get('buyer',array( 'as'=>'bdc','uses'=>'testing\BDController@home'));
 Route::post('request',array( 'before'=>'csrf','uses'=>'testing\BDController@request'));
-Route::get('detail/{id}',array( 'as'=>'pro_detail','uses'=>'testing\ProductController@index'));
+Route::get('detail/{id}',array( 'as'=>'pro_detail','uses'=>'ProductDetailController@index'));
 Route::get('insert_meta',array( 'as'=>'insert','uses'=>'testing\BDController@insert_meta'));
 Route::post('post_info',array( 'before'=>'csrf','uses'=>'testing\BDController@post_info'));
 Route::get('home',array( 'as'=>'info','uses'=>'testing\BDController@info'));
 Route::get('wait',array( 'as'=>'wait','uses'=>'testing\BDController@wait'));
 Route::get('wait2',array( 'as'=>'wait2','uses'=>'testing\BDController@wait2'));
-Route::post('place_order',array( 'as'=>'place_order','uses'=>'testing\ProductController@place_order'));
-Route::get('req_sample',array( 'as'=>'req_sample','uses'=>'testing\ProductController@req_sample'));
-Route::get('wait_order',array( 'as'=>'wait_order','uses'=>'testing\ProductController@wait_order'));
-Route::get('wait_req',array( 'as'=>'wait_req','uses'=>'testing\ProductController@wait_req'));
+Route::post('place_order',array( 'as'=>'place_order','uses'=>'ProductDetailController@place_order'));
+Route::get('req_sample',array( 'as'=>'req_sample','uses'=>'ProductDetailController@req_sample'));
+Route::get('wait_order',array( 'as'=>'wait_order','uses'=>'ProductDetailController@wait_order'));
+Route::get('wait_req',array( 'as'=>'wait_req','uses'=>'ProductDetailController@wait_req'));
 Route::get('/feedback','ProductController@submitFeedback');
 

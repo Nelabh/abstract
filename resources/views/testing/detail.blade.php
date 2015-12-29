@@ -6,14 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>{{	$data[0]->name	}} | vKulp</title>
+        <title>{{	$parentproduct[0]->name	}} | vKulp</title>
         <!-- Bootstrap core CSS -->
         <link href="{{URL::asset('testing/b/css/bootstrap.css')}}" rel="stylesheet"/>
         <link href="{{URL::asset('testing/b/css/style.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{URL::asset('testing/b/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{URL::asset('testing/b/css/responsive-01.css')}}" rel="stylesheet">
         <style>
-            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-inner-spin-button, 
             input[type=number]::-webkit-outer-spin-button {
                 -webkit-appearance: none;
                 -moz-appearance: none;
@@ -126,7 +126,7 @@
                     </div>
                     <div class="col-md-7 detailpro_right">
                         <div class="col-md-12 detailpro_righth1">
-                            <h3>{{	$data[0]->name	}}</h3>
+                            <h3>{{	$parentproduct[0]->name	}}</h3>
                         </div>
                         <div class="col-md-12 check_wrap">
                             <div class="col-md-12 check_outer">
@@ -146,40 +146,10 @@
                             <div class="col-md-6 placeorder_outer">
                                 <div class="col-md-12 placeorder_headbg">
                                     <h3>&#8377;<input type="text" id="mrp" value="{{  $data[0]->max_retail_price  }}" />{{  $data[0]->max_retail_price  }} </h3>per piece
-                                </div>
-                                @if($data[0]->sku_small || $data[0]->sku_medium || $data[0]->sku_large)
-                                    <div class="col-md-12 skutxt_outer">
-                                        <div class="col-md-3 skutxt">
-                                            <h4>SKU</h4>
-                                        </div>
-                                        <div class="col-md-9 skudivs">
-                                            <div class="col-md-12 btn_wrapsku">
-
-                                                @if($data[0]->sku_small)
-                                                    <div class="radio">
-                                                        {!! Form::radio( 'sku_option' , $data[0]->sku_small , null , [ 'id'=>'sku_small' ] ) !!}
-                                                        {!! Form::label( 'sku_small' , 'Small: ' ) !!} {{  $data[0]->sku_small  }}
-                                                    </div>
-                                                @endif
-
-                                                @if($data[0]->sku_medium )
-                                                    <div class="radio">
-                                                        {!! Form::radio( 'sku_option' , $data[0]->sku_medium , null , [ 'id'=>'sku_medium' ] ) !!}
-                                                        {!! Form::label( 'sku_medium' , 'Medium: ' ) !!} {{  $data[0]->sku_medium  }}
-                                                    </div>
-                                                @endif
-
-                                                @if($data[0]->sku_large)
-                                                    <div class="radio">
-                                                        {!! Form::radio( 'sku_option' , $data[0]->sku_large , null , [ 'id'=>'sku_large' ] ) !!}
-                                                        {!! Form::label( 'sku_large' , 'Large: ' ) !!} {{  $data[0]->sku_large  }}
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                                <div class="col-md-12 skutxt_outer skutxt_mid">
+                                </div><!-- 
+                                <center>SKU</center>
+                                -->
+                                 <div class="col-md-12 skutxt_outer skutxt_mid">
                                     {!!Form::open(array('url'=>'place_order', 'method'=>'post' ))!!}
                                     {!!Form::token()!!}
 
@@ -279,9 +249,9 @@
             <div class="row">
                 <div class="col-md-12 feature__outer">
                     <div class="col-md-12 feature__wrap">
-                        <h3>Key Features of {{	$data[0]->name	}}</h3>
+                        <h3>Key Features of {{	$parentproduct[0]->name	}}</h3>
                         <ul>
-                            <li>{{	$data[0]->description	}}</li>
+                            <li>{{	$parentproduct[0]->description	}}</li>
                         </ul>
                     </div>
                 </div>
@@ -330,7 +300,7 @@
                         </div>
                         <div class="col-md-12 specification__generaltxt_wrap">
                             <div class="col-md-4 col-sm-4 col-xs-6 specification__generaltxt">Brand</div>
-                            <div class="col-md-8 col-sm-8 col-xs-6 specification__generaltxt">{{$data[0]->brand_name}}</div>
+                            <div class="col-md-8 col-sm-8 col-xs-6 specification__generaltxt">{{$parentproduct[0]->brand}}</div>
                         </div>
                         <div class="col-md-12 specification__headtxtbot"><h4 class="col-md-12 specification__headtxt">Packaging Details</h4></div>
                         <div class="col-md-12 specification__generaltxt_wrap">
