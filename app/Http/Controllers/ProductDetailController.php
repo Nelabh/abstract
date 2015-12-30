@@ -60,13 +60,14 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     {
     	 if(\Auth::check())
       {
-     
+      
         $email=\Auth::user()->email;
         $id=Session::get('prod_id');
     	$data=DB::table('products')->where('id',$id)->get();
         $quantity=Input::get('quantity');
     	$num=0;
         $name = DB::table('users')->where('email',$email)->pluck('name');
+        $parentproductid=$data[0]->parent_product_id;
         $contact = DB::table('users')->where('email',$email)->pluck('phone');
         $username = DB::table('users')->where('email',$email)->pluck('username'); 
         $add1 = DB::table('meta')->where('email',$email)->pluck('address1');
@@ -75,16 +76,16 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
         $state = DB::table('meta')->where('email',$email)->pluck('state');
         $zip = DB::table('meta')->where('email',$email)->pluck('zipcode');
         $address= ''.$add1.','.$add2.','.$city.','.$state.'-'.$zip;
-      
-
+        $parentproduct=DB::table('parent_products')->where('id',$parentproductid)->get();
+        //dd($parentproduct);
     $text="";
      $text.="Dear vKulp Sales Team,<br/>";
      $text.="The order has been placed by ".$username." with following specifications:<br/>";
      
       
       
-        $text.="Name: ".$data[0]->name."<br/>";
-        $text.="Description: ".$data[0]->description."<br/>";
+        $text.="Name: ".$parentproduct[0]->name.' '.$data[0]->variant_name."<br/>";
+        $text.="Description: ".$parentproduct[0]->description."<br/>";
         $text.="Quantity: ".$quantity."<br/>";    
         $text.="Price: Rs. ".$data[0]->max_retail_price."<br/>";    
     
@@ -128,7 +129,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
         $state = DB::table('meta')->where('email',$email)->pluck('state');
         $zip = DB::table('meta')->where('email',$email)->pluck('zipcode');
         $address= ''.$add1.','.$add2.','.$city.','.$state.'-'.$zip;
-      
+
+        $parentproductid=$data[0]->parent_product_id;
+        $parentproduct=DB::table('parent_products')->where('id',$parentproductid)->get();
 
     $text="";
      $text.="Dear vKulp Sales Team,<br/>";
@@ -136,8 +139,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
      
       
       
-        $text.="Name: ".$data[0]->name."<br/>";
-        $text.="Description: ".$data[0]->description."<br/>";
+        $text.="Name: ".$data[0]->variant_name."<br/>";
+        $text.="Description: ".$parentproduct[0]->description."<br/>";
         
         $text.="Price: Rs. ".$data[0]->max_retail_price."<br/>";    
     
