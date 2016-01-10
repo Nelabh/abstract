@@ -25,30 +25,29 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 		$user_id= \Auth::user()->id;
 		
 		$catarray=array();
-        $data=DB::table('products')->where('id',$id)->get();
-        //$data[0]->image='http://ec2-52-26-112-95.us-west-2.compute.amazonaws.com/home-theme/img/products/'.$data[0]->image;
-        $parentproductid=$data[0]->parent_product_id;
+        $data=DB::table('parent_products')->where('id',$id)->get();
+        /*$parentproductid=$data[0]->parent_product_id;
         $parentproduct=DB::table('parent_products')->where('id',$parentproductid)->get();
-        //dd($parentproduct);
+     */
 
-		$category=DB::table('categories')->where('id',$parentproduct[0]->category_id)->get();
+        $variant = DB::table('products')->where('parent_product_id',$id)->get();
+		$category=DB::table('categories')->where('id',$data[0]->category_id)->get();
 		$catarray['category_name']=$category[0]->name;
 		$catarray['category_slug']=$category[0]->slug;
-		$sub_category=DB::table('sub_categories')->where('id',$parentproduct[0]->sub_category_id)->get();
+		$sub_category=DB::table('sub_categories')->where('id',$data[0]->sub_category_id)->get();
 		$catarray['sub_category_name']=$sub_category[0]->name;
 		$catarray['sub_category_slug']=$sub_category[0]->slug;
-		$sub_sub_category=DB::table('sub_sub_categories')->where('id',$parentproduct[0]->sub_sub_category_id)->get();
+		$sub_sub_category=DB::table('sub_sub_categories')->where('id',$data[0]->sub_sub_category_id)->get();
 		$catarray['sub_sub_category_name']=$sub_sub_category[0]->name;
 		$catarray['sub_sub_category_slug']=$sub_sub_category[0]->slug;
 		$categories=$catarray;
 
-		// $data=DB::table('categories')->where('id',$id)->get();
-       // dd($data);
-	   array_push($data,$user_id);
+    
+	    array_push($data,$user_id);
 	   
         Session::put('prod_id', $id);
        
-        return \View::make('product-detail.detail',compact('data','parentproduct','categories'));
+        return \View::make('product-detail.detail',compact('data','variant','categories'));
 	 }
         else 
         {
@@ -100,7 +99,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 		$subj="Order Placed by ".$username;
 	 Mail::send(['html'=>'testing.mail'], array('text'=>$text), function ($m) use ($subj) {
             $m->from('contact@vkulp.com');
-            $m->to('buyrequest@vkulp.com', 'buyrequest')->subject($subj);
+            $m->to('nelabhkotiya@gmail.com', 'placeorder')->subject($subj);
         });
 	return Redirect::to('/wait_order');
 	 }
@@ -139,7 +138,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
      
       
       
-        $text.="Name: ".$data[0]->variant_name."<br/>";
+        $text.="Name: ".$parentproduct[0]->name.' '.$data[0]->variant_name."<br/>";
         $text.="Description: ".$parentproduct[0]->description."<br/>";
         
         $text.="Price: Rs. ".$data[0]->max_retail_price."<br/>";    
@@ -155,7 +154,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 		$subj="Sample Requested by ".$username;
 	 Mail::send(['html'=>'testing.mail'], array('text'=>$text), function ($m) use ($subj) {
             $m->from('contact@vkulp.com');
-            $m->to('buyrequest@vkulp.com', 'buyrequest')->subject($subj);
+            $m->to('nelabhkotiya@gmail.com', 'samplerequired')->subject($subj);
         });
 	return Redirect::to('/wait_req');
 	 }
