@@ -23,12 +23,14 @@
         </style>
         <script>
         function variantchange()
-        {   var var_val=$('#variant').val();
+        {   var vari ={!!json_encode($mrp)!!};
+            var var_val=$('#variant').val();
             for(var i=0;i<{{count($variant)}};i++)
             {
-                if(var_val==parsInt(var_val))
+                if(!var_val.localeCompare(i))
                 {
-                 }
+                    $('#mrp1').html('&#8377;'+vari[i]);
+                }
             }
         }
             function loc()
@@ -154,7 +156,7 @@
                         <div class="col-md-12 placeorder_wrap">
                             <div class="col-md-6 placeorder_outer">
                                 <div class="col-md-12 placeorder_headbg">
-                                    <h3>&#8377;<input type="text" id="mrp" value="{{  $variant[0]->max_retail_price  }}"/>{{  $variant[0]->max_retail_price  }} </h3>per piece
+                                    <input type="hidden" id="mrp" value="{{  $variant[0]->max_retail_price  }}"/> <h3><p id="mrp1">&#8377;{!!  $variant[0]->max_retail_price  !!}</p></h3>per piece 
                                 </div><!-- 
                                 <center>SKU</center>
                                 -->

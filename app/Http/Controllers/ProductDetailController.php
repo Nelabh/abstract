@@ -26,12 +26,18 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 		
 		$catarray=array();
         $data=DB::table('parent_products')->where('id',$id)->get();
+
         /*$parentproductid=$data[0]->parent_product_id;
         $parentproduct=DB::table('parent_products')->where('id',$parentproductid)->get();
      */
-
+        $mrp=array();
         $variant = DB::table('products')->where('parent_product_id',$id)->get();
-		$category=DB::table('categories')->where('id',$data[0]->category_id)->get();
+		foreach($variant as $var)
+        {
+            array_push($mrp,$var->max_retail_price);
+        }
+
+        $category=DB::table('categories')->where('id',$data[0]->category_id)->get();
 		$catarray['category_name']=$category[0]->name;
 		$catarray['category_slug']=$category[0]->slug;
 		$sub_category=DB::table('sub_categories')->where('id',$data[0]->sub_category_id)->get();
@@ -41,13 +47,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 		$catarray['sub_sub_category_name']=$sub_sub_category[0]->name;
 		$catarray['sub_sub_category_slug']=$sub_sub_category[0]->slug;
 		$categories=$catarray;
-
+        
     
 	    array_push($data,$user_id);
 	   
         Session::put('prod_id', $id);
        
-        return \View::make('product-detail.detail',compact('data','variant','categories'));
+        return \View::make('product-detail.detail',compact('data','variant','categories','mrp'));
 	 }
         else 
         {
