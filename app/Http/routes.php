@@ -28,7 +28,7 @@ Route::get('downloadexcel',function(){
 Route::post('importproduct', [
     'as' => 'products.import', 'uses' => 'ProductController@import'
 ]);
-Route::get('getcategorylist','SearchProductController@getcategorylist');
+Route::get('getcategorylist','SearchProductController@getSuggestedProducts');
 
 Route::post('delete-registered-images', 'RegistrationController@deleteimages');
 
@@ -77,6 +77,9 @@ Route::get('search','SearchProductController@searchProduct');
 Route::get('category/{slug}','SearchProductController@category');
 Route::get('sub-category/{slug}','SearchProductController@sub_category');
 Route::get('child-category/{slug}','SearchProductController@child_category');
+
+Route::post('/filter','SearchProductController@filterProducts');
+
 //Route::get('nature/{slug}','SearchProductController@nature');
 //Route::get('year/{min}/{max}','SearchProductController@year');
 //Route::get('credit/{slug}','SearchProductController@credit');
@@ -95,6 +98,7 @@ Route::get('compare/destroy','CompareProductsController@destroy');
     //Ajax Routes
 Route::post('/getSubCategories','ProductController@getSubCategories');
 Route::post('/getSubSubCategories','ProductController@getSubSubCategories');
+Route::post('/getAttributesHtml','ProductController@getAttributesHtml');
 
 Route::get('/product',function(){
    return view('search');
@@ -110,6 +114,7 @@ return "Your Laravel version is ".$laravel::VERSION;
 
 
 //Testing Routes
+
 Route::get('buyer',array( 'as'=>'bdc','uses'=>'testing\BDController@home'));
 Route::post('request',array( 'before'=>'csrf','uses'=>'testing\BDController@request'));
 Route::get('detail/{id}',array( 'as'=>'pro_detail','uses'=>'ProductDetailController@index'));
@@ -123,4 +128,5 @@ Route::get('req_sample',array( 'as'=>'req_sample','uses'=>'ProductDetailControll
 Route::get('wait_order',array( 'as'=>'wait_order','uses'=>'ProductDetailController@wait_order'));
 Route::get('wait_req',array( 'as'=>'wait_req','uses'=>'ProductDetailController@wait_req'));
 Route::get('/feedback','ProductController@submitFeedback');
+
 
