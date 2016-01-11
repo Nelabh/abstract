@@ -34,6 +34,9 @@
                 {
                     $('#mrp1').html('&#8377;'+varmrp[i]);
                     $('#prodimg').attr('src',"{{URL::asset('home-theme/img/products/')}}/"+varimg[i]);
+                    $('#packtyp').html(varpt[i]);
+                    $('#packvol').html(varpv[i]);
+
                 }
             }
         }
@@ -242,13 +245,10 @@
                                     </div>
                                     <div style="padding-left: 26px;!important" class="col-md-12 retailul">
                                         <ul class="">
-                                            <li>Cash-On-Delivery</li>
                                             <li>Cheque at the time of Delivery</li>
                                             <li>NEFT within 24 hours of Delivery </li>
                                             <li>Demand Draft </li>
-											<li>CASH ON DELIVERY</li>
-                                            <li>10 DAYS REPLACEMENT GUARANTEE</li>
-                                        </ul>
+											</ul>
                                     </div>
                                 </div>
                             </div>
@@ -338,11 +338,11 @@
                         <div class="col-md-12 specification__headtxtbot"><h4 class="col-md-12 specification__headtxt">Packaging Details</h4></div>
                         <div class="col-md-12 specification__generaltxt_wrap">
                             <div class="col-md-4 col-sm-4 col-xs-6 specification__generaltxt">Packaging Type</div>
-                            <div class="col-md-8 col-sm-8 col-xs-6 specification__generaltxt">{{$variant[0]->package_type}}</div>
+                            <div class="col-md-8 col-sm-8 col-xs-6 specification__generaltxt" id="packtyp">{{$variant[0]->package_type}}</div>
                         </div>
                         <div class="col-md-12 specification__generaltxt_wrap">
                             <div class="col-md-4 col-sm-4 col-xs-6 specification__generaltxt">Packaging Volume</div>
-                            <div class="col-md-8 col-sm-8 col-xs-6 specification__generaltxt">{{$variant[0]->package_volume}}</div>
+                            <div class="col-md-8 col-sm-8 col-xs-6 specification__generaltxt" id="packvol">{{$variant[0]->package_volume}}</div>
                         </div>
 
                     </div>
