@@ -32,6 +32,7 @@
             {
                 if(!var_val.localeCompare(i))
                 {
+                    $('#mrp').val(varmrp[i]);
                     $('#mrp1').html('&#8377;'+varmrp[i]);
                     $('#prodimg').attr('src',"{{URL::asset('home-theme/img/products/')}}/"+varimg[i]);
                     $('#packtyp').html(varpt[i]);
@@ -160,6 +161,9 @@
                                 </div>
                             </div>
                         </div>
+                         {!!Form::open(array('url'=>'place_order', 'method'=>'post' ))!!}
+                                    {!!Form::token()!!}
+
                         <div class="col-md-12 placeorder_wrap">
                             <div class="col-md-6 placeorder_outer">
                                 <div class="col-md-12 placeorder_headbg">
@@ -168,9 +172,7 @@
                                 <center>SKU</center>
                                 -->
                                  <div class="col-md-12 skutxt_outer skutxt_mid">
-                                    {!!Form::open(array('url'=>'place_order', 'method'=>'post' ))!!}
-                                    {!!Form::token()!!}
-
+                                   
                                     <div class="col-md-12">
                                         <div class="col-md-6 totalprc">
                                             <h4>Select Variant</h4>
