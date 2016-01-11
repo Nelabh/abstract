@@ -30,10 +30,16 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
         /*$parentproductid=$data[0]->parent_product_id;
         $parentproduct=DB::table('parent_products')->where('id',$parentproductid)->get();
      */
-        $mrp=array();
+        $img =array(); 
+        $mrp = array();
+        $pt = array();
+        $pv = array();
         $variant = DB::table('products')->where('parent_product_id',$id)->get();
 		foreach($variant as $var)
         {
+            array_push($img, $var->image);
+            array_push($pt, $var->package_type);
+            array_push($pv, $var->package_volume);
             array_push($mrp,$var->max_retail_price);
         }
 
@@ -53,7 +59,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	   
         Session::put('prod_id', $id);
        
-        return \View::make('product-detail.detail',compact('data','variant','categories','mrp'));
+        return \View::make('product-detail.detail',compact('data','variant','categories','mrp','pt','pv','img'));
 	 }
         else 
         {

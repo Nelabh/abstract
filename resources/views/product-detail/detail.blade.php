@@ -23,13 +23,17 @@
         </style>
         <script>
         function variantchange()
-        {   var vari ={!!json_encode($mrp)!!};
+        {   var varmrp = {!!json_encode($mrp)!!};
+            var varimg = {!!json_encode($img)!!};
+            var varpv = {!!json_encode($pv)!!};
+            var varpt =  {!!json_encode($pt)!!};
             var var_val=$('#variant').val();
             for(var i=0;i<{{count($variant)}};i++)
             {
                 if(!var_val.localeCompare(i))
                 {
-                    $('#mrp1').html('&#8377;'+vari[i]);
+                    $('#mrp1').html('&#8377;'+varmrp[i]);
+                    $('#prodimg').attr('src',"{{URL::asset('home-theme/img/products/')}}/"+varimg[i]);
                 }
             }
         }
