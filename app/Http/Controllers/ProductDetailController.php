@@ -31,12 +31,16 @@ class ProductDetailController extends BaseController {
             $img = array();
             $mrp = array();
             $pt = array();
+            $vp = array();
             $pv = array();
             $variant = DB::table('view_products')->where('parent_product_id', $data[0]->parent_product_id)->get();
             foreach ($variant as $var) {
                 array_push($img, $var->image);
                 array_push($pt, $var->package_type);
                 array_push($pv, $var->package_volume);
+                $vcost=$var->landing_cost + ($var->supplier_price * $var->margin/100);
+                $var->v_cost = $vcost;
+                array_push($vp, $vcost);
                 array_push($mrp, $var->max_retail_price);
             }
 
@@ -63,7 +67,7 @@ class ProductDetailController extends BaseController {
             array_push($data, $user_id);
             Session::put('prod_id', $id);
 
-            return \View::make('product-detail.detail', compact('data', 'variant', 'parent_product_data','product_attribute_data', 'categories', 'mrp', 'pt', 'pv', 'img'));
+            return \View::make('product-detail.detail', compact('data', 'variant', 'parent_product_data','product_attribute_data', 'categories', 'mrp', 'pt', 'pv', 'img','vp'));
         } else {
             return Redirect::to('/auth/login');
         }

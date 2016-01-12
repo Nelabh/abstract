@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>{{	$data[0]->name	}} | vKulp</title>
+        <title>{{   $data[0]->name  }} | vKulp</title>
         <!-- Bootstrap core CSS -->
         <link href="{{URL::asset('testing/b/css/bootstrap.css')}}" rel="stylesheet"/>
         <link href="{{URL::asset('testing/b/css/style.css')}}" rel="stylesheet" type="text/css" />
@@ -22,21 +22,32 @@
             }
         </style>
         <script>
+        function quantitychange()
+        {
+            var quant = $('#quantity').val();
+            var total = $('#vcost').val()*quant;
+            $('#total_price').val(total);
+        }
+         
         function variantchange()
         {   var varmrp = {!!json_encode($mrp)!!};
             var varimg = {!!json_encode($img)!!};
             var varpv = {!!json_encode($pv)!!};
             var varpt =  {!!json_encode($pt)!!};
+            var varvp = {!!json_encode($vp)!!};
             var var_val=$('#variant').val();
             for(var i=0;i<{{count($variant)}};i++)
             {
                 if(!var_val.localeCompare(i))
                 {
                     $('#mrp').val(varmrp[i]);
-                    $('#mrp1').html('&#8377;'+varmrp[i]);
+                    $('#mrp1').html('<strike>&#8377;'+varmrp[i]+'</strike>');
                     $('#prodimg').attr('src',"{{URL::asset('home-theme/img/products/')}}/"+varimg[i]);
                     $('#packtyp').html(varpt[i]);
                     $('#packvol').html(varpv[i]);
+                    $('#vcost1').html('&#8377;'+varvp[i]);
+                    $('#vcost').val(varvp[i]);
+
 
                 }
             }
@@ -57,8 +68,8 @@
                             break;
                         default:
                             alert('vKulp will start servicing in your area soon!');
-							$('#place_order').hide();
-							$('#no_service_area').show();
+                            $('#place_order').hide();
+                            $('#no_service_area').show();
 
                     }
                 }
@@ -126,7 +137,7 @@
                         </ul>
                     </div>
                     <div class="col-md-2 getbutton">
-                        <div class="col-md-12 getbutton_outer">	
+                        <div class="col-md-12 getbutton_outer"> 
                             <button type="button" class="col-md-10 col-md-offset-2 get_quotations">Get Quotations</button>
 
                         </div>
@@ -145,7 +156,7 @@
                     </div>
                     <div class="col-md-7 detailpro_right">
                         <div class="col-md-12 detailpro_righth1">
-                            <h3>{{	$data[0]->name	}}</h3>
+                            <h3>{{  $data[0]->name  }}</h3>
                         </div>
                         <div class="col-md-12 check_wrap">
                             <div class="col-md-12 check_outer">
@@ -167,7 +178,8 @@
                         <div class="col-md-12 placeorder_wrap">
                             <div class="col-md-6 placeorder_outer">
                                 <div class="col-md-12 placeorder_headbg">
-                                    <input type="hidden" id="mrp" value="{{  $variant[0]->max_retail_price  }}"/> <h3><p id="mrp1">&#8377;{!!  $variant[0]->max_retail_price  !!}</p></h3>per piece 
+                                    <input type="hidden" id="mrp" value="{{  $variant[0]->max_retail_price  }}"/><input type="hidden" id="vcost" value="{{  $variant[0]->v_cost  }}"/> <h3><p id="mrp1"><strike>&#8377;{!!  $variant[0]->max_retail_price  !!}</strike></p></h3>
+                                    <h3><p id="vcost1">&#8377;{!!  $variant[0]->v_cost  !!}</p></h3>per piece 
                                 </div><!-- 
                                 <center>SKU</center>
                                 -->
@@ -196,7 +208,7 @@
                                     <div class="col-md-6 sku_quality">
                                         <div class="col-md-12 sku_quality_outer">
                                             <div class="form-group">
-                                                {!! Form::input('number','quantity',null,['class'=>'form-control' , 'id' => 'quantity' , 'step'=> '1' , 'min'=>'0']) !!}
+                                               {!! Form::input('number','quantity',null,['class'=>'form-control' , 'id' => 'quantity','onkeyup'=>'quantitychange()' , 'step'=> '1' , 'min'=>'0']) !!}
                                             </div>
                                         </div>
                                     </div>
@@ -226,7 +238,7 @@
                                                 </div>
                                             </div></a>
                                     </div>
-									<div id="no_service_area" style="display:none" class="col-md-12 samlpebtn_outer">
+                                    <div id="no_service_area" style="display:none" class="col-md-12 samlpebtn_outer">
                                         Sorry..Currently we do not provide service in this area we will notify you soon!!!!
                                     </div>
                                     </form>
@@ -250,7 +262,7 @@
                                             <li>Cheque at the time of Delivery</li>
                                             <li>NEFT within 24 hours of Delivery </li>
                                             <li>Demand Draft </li>
-											</ul>
+                                            </ul>
                                     </div>
                                 </div>
                             </div>
@@ -284,14 +296,14 @@
             <div class="row">
                 <div class="col-md-12 feature__outer">
                     <div class="col-md-12 feature__wrap">
-                        <h3>Key Features of {{	$data[0]->name	}}</h3>
+                        <h3>Key Features of {{  $data[0]->name  }}</h3>
                         <ul>
-                            <li>{{	$data[0]->description	}}</li>
+                            <li>{{  $data[0]->description   }}</li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>	
+        </div>  
         <div class="container">
             <div class="row">
                 <div class="col-md-12 feature__outer">
@@ -299,20 +311,20 @@
                         <div class="col-md-3 infohelp__txt"><p>Was this information Helpful?</p></div>
                         <div class="col-md-2 infohelp__txt2"><span>Yes</span><a id="feedback_yes" href="#"><img src="{{URL::asset('testing/b/img/thumbsup.png')}}"></a></div>
                         <div class="col-md-2 infohelp__txt2">
-							<span>No</span><a id="feedback_no" href="#">
-								<img src="{{URL::asset('testing/b/img/thumbsdown.png')}}"></a>
-								<div style="display:none;" id="feedback_no_text"><textarea id="feedback_no_comment">
-								
-								</textarea>
-								<input  value="Okay!!!" id="submit_feedback" class="col-md-12 btn btn-danger dangerbtn" type="button" /></div>
-						</div>
-						
+                            <span>No</span><a id="feedback_no" href="#">
+                                <img src="{{URL::asset('testing/b/img/thumbsdown.png')}}"></a>
+                                <div style="display:none;" id="feedback_no_text"><textarea id="feedback_no_comment">
+                                
+                                </textarea>
+                                <input  value="Okay!!!" id="submit_feedback" class="col-md-12 btn btn-danger dangerbtn" type="button" /></div>
+                        </div>
+                        
                     </div>
-					<div id="feedback_message">
-				    </div>
+                    <div id="feedback_message">
+                    </div>
                 </div>
             </div>
-        </div>	
+        </div>  
         <div class="container">
 
         </div>
@@ -358,7 +370,7 @@
                     </div>
                 </div>
             </div>
-        </div>	
+        </div>  
         <div class="foottopborder_wrap">
             <div class="container">
                 <div class="row">
@@ -366,7 +378,7 @@
                     </div>
                 </div>
             </div>
-        </div>	
+        </div>  
         <div class="footer_wrap">
             <div class="container">
                 <div class="row">
@@ -475,15 +487,15 @@
                 </div>
             </div>
         </div>
-	<input type="hidden" value="{{$data[0]->id}}" id="product_id"/>
-	<input type="hidden" value="{{$data[1]}}" id="user_id"/>
+    <input type="hidden" value="{{$data[0]->id}}" id="product_id"/>
+    <input type="hidden" value="{{$data[1]}}" id="user_id"/>
     </body>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="{{URL::asset('testing/b/js/jquery.min.js')}}"></script>
     <script src="{{URL::asset('testing/b/js/bootstrap.js')}}"></script>
     <script>
 
-	
+    
         $(document).ready(function()
         {
             var initial_mrp = $('#mrp').val();
@@ -518,33 +530,33 @@
                     }
                 });
             }
-			$('#feedback_yes').click(function() {
-				var product_id= $('#product_id').val();
-				var user_id= $('#user_id').val();
-				var feedback = "Yes";
+            $('#feedback_yes').click(function() {
+                var product_id= $('#product_id').val();
+                var user_id= $('#user_id').val();
+                var feedback = "Yes";
                 var comment = "no comments"
-				$.get("/feedback",{product_id: product_id,user_id: user_id,feedback:feedback,comment:comment}, function(data){
-					/*.done(function() {*/
-					 $('#infowrap').hide();
+                $.get("{{URL::asset('feedback')}}",{product_id: product_id,user_id: user_id,feedback:feedback,comment:comment}, function(data){
+                    /*.done(function() {*/
+                     $('#infowrap').hide();
                     $('#feedback_message').html("<p>Thank You For Your Feedback. We Will Get Back To You!!!</p>");
-          /*  			  })*/
-				});
-			});
-			$('#feedback_no').click(function() {
-				$('#feedback_no_text').show();
-			});
-			$('#submit_feedback').click(function() {
-				var product_id= $('#product_id').val();
-				var user_id= $('#user_id').val();
-				var feedback = "No";
-				var comment = $('#feedback_no_comment').val();
-				$.get("/feedback",{product_id: product_id,user_id: user_id,feedback:feedback,comment:comment}, function(data){
-					/*.done(function() {*/
+          /*              })*/
+                });
+            });
+            $('#feedback_no').click(function() {
+                $('#feedback_no_text').show();
+            });
+            $('#submit_feedback').click(function() {
+                var product_id= $('#product_id').val();
+                var user_id= $('#user_id').val();
+                var feedback = "No";
+                var comment = $('#feedback_no_comment').val();
+                $.get("{{URL::asset('feedback')}}",{product_id: product_id,user_id: user_id,feedback:feedback,comment:comment}, function(data){
+                    /*.done(function() {*/
                         $('#infowrap').hide();
-					$('#feedback_message').html("<p>Thank You For Your Feedback. We Will Get Back To You!!!</p>");
-				 /* })*/
-				});
-			});
+                    $('#feedback_message').html("<p>Thank You For Your Feedback. We Will Get Back To You!!!</p>");
+                 /* })*/
+                });
+            });
         });
     </script>
 </html>
