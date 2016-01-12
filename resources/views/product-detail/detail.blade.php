@@ -50,7 +50,7 @@
                     switch (spin)
                     {
                         case '110':
-                        case '122':
+                        case '122': 
                         case '201':
                         case '560':
                             alert('The Items will be delivered within 48-hrs of Placing Order.');
@@ -342,10 +342,18 @@
                             <div class="col-md-4 col-sm-4 col-xs-6 specification__generaltxt">Packaging Type</div>
                             <div class="col-md-8 col-sm-8 col-xs-6 specification__generaltxt" id="packtyp">{{$variant[0]->package_type}}</div>
                         </div>
+
                         <div class="col-md-12 specification__generaltxt_wrap">
                             <div class="col-md-4 col-sm-4 col-xs-6 specification__generaltxt">Packaging Volume</div>
                             <div class="col-md-8 col-sm-8 col-xs-6 specification__generaltxt" id="packvol">{{$variant[0]->package_volume}}</div>
                         </div>
+                        @foreach($product_attribute_data as $pr)
+                        <div class="col-md-12 specification__generaltxt_wrap">
+                            <div class="col-md-4 col-sm-4 col-xs-6 specification__generaltxt">{{$pr->attribute_name}}</div>
+                            <div class="col-md-8 col-sm-8 col-xs-6 specification__generaltxt" >{{$pr->attribute_value}}</div>
+                        </div>
+
+                        @endforeach
 
                     </div>
                 </div>

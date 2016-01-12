@@ -54,6 +54,11 @@ class ProductDetailController extends BaseController {
             $categories = $catarray;
 
             $product_attribute_data = DB::select('SELECT * FROM product_attribute_value WHERE attribute_value_id IN (SELECT attribute_value_id FROM `product_attribute_relation` WHERE product_id =' . $data[0]->id . ')');
+           foreach($product_attribute_data as $pro)
+           {
+            $att=DB::table('product_attribute')->where('attribute_id',$pro->attribute_id)->pluck('attribute_name');
+            $pro->attribute_name=$att;
+           }
 
             array_push($data, $user_id);
             Session::put('prod_id', $id);
