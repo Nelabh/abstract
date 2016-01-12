@@ -179,7 +179,7 @@
                                         </div>
                                         <div class="col-md-6 sku_mid">
                                             <div class="form-group">
-                                        <select name="variant" id="variant" onchange="variantchange()">
+                                        <select class="form-control selectpicker" name="variant" id="variant" onchange="variantchange()">
                                          <?php $i=0;?>
                                         @foreach($variant as $v)
                                         <option value="{{$i++}}">{{$v->variant_name}}</option>
@@ -335,7 +335,7 @@
                         </div>
                         <div class="col-md-12 specification__generaltxt_wrap">
                             <div class="col-md-4 col-sm-4 col-xs-6 specification__generaltxt">Brand</div>
-                            <div class="col-md-8 col-sm-8 col-xs-6 specification__generaltxt">{{$data[0]->brand}}</div>
+                            <div class="col-md-8 col-sm-8 col-xs-6 specification__generaltxt">{{$data[0]->brand_name}}</div>
                         </div>
                         <div class="col-md-12 specification__headtxtbot"><h4 class="col-md-12 specification__headtxt">Packaging Details</h4></div>
                         <div class="col-md-12 specification__generaltxt_wrap">
