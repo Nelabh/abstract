@@ -22,6 +22,13 @@
             }
         </style>
         <script>
+        function loading()
+        {
+            $('#quantity').val('1');
+            var cost = $('#vcost').val(); 
+           $('#total_price').val(cost);
+        }
+
         function quantitychange()
         {
             var quant = $('#quantity').val();
@@ -45,6 +52,7 @@
                     $('#prodimg').attr('src',"{{URL::asset('home-theme/img/products/')}}/"+varimg[i]);
                     $('#packtyp').html(varpt[i]);
                     $('#packvol').html(varpv[i]);
+                    $('#total_price').val(varvp[i]*$('#quantity').val());
                     $('#vcost1').html('&#8377;'+varvp[i]);
                     $('#vcost').val(varvp[i]);
 
@@ -80,7 +88,7 @@
             }
         </script>
     </head>
-    <body>
+    <body onload="loading()">
         <nav class="nav navbar-default navbar nav_wrap">
             <div class="container">
                 <div class="row">
@@ -213,8 +221,8 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="col-md-12">
-                                        <div class="col-md-6 totalprc">
+                                    <div class="col-md-12" >
+                                        <div class="col-md-6 totalprc" >
                                             <h4>Total Price</h4>
                                         </div>
                                         <div class="col-md-6 sku_mid">
