@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>{{   $data[0]->name  }} | vKulp</title>
+        <title>{{	$data[0]->name	}} | vKulp</title>
         <!-- Bootstrap core CSS -->
         <link href="{{URL::asset('testing/b/css/bootstrap.css')}}" rel="stylesheet"/>
         <link href="{{URL::asset('testing/b/css/style.css')}}" rel="stylesheet" type="text/css" />
@@ -76,8 +76,8 @@
                             break;
                         default:
                             alert('vKulp will start servicing in your area soon!');
-                            $('#place_order').hide();
-                            $('#no_service_area').show();
+							$('#place_order').hide();
+							$('#no_service_area').show();
 
                     }
                 }
@@ -145,7 +145,7 @@
                         </ul>
                     </div>
                     <div class="col-md-2 getbutton">
-                        <div class="col-md-12 getbutton_outer"> 
+                        <div class="col-md-12 getbutton_outer">	
                             <button type="button" class="col-md-10 col-md-offset-2 get_quotations">Get Quotations</button>
 
                         </div>
@@ -164,7 +164,7 @@
                     </div>
                     <div class="col-md-7 detailpro_right">
                         <div class="col-md-12 detailpro_righth1">
-                            <h3>{{  $data[0]->name  }}</h3>
+                            <h3>{{	$data[0]->name	}}</h3>
                         </div>
                         <div class="col-md-12 check_wrap">
                             <div class="col-md-12 check_outer">
@@ -180,9 +180,8 @@
                                 </div>
                             </div>
                         </div>
-                         {!!Form::open(array('url'=>'place_order', 'method'=>'post' ))!!}
-                                    {!!Form::token()!!}
-
+                                  
+                                    <input type="hidden" name="_token" id="token" value="{!!csrf_token()!!}">
                         <div class="col-md-12 placeorder_wrap">
                             <div class="col-md-6 placeorder_outer">
                                 <div class="col-md-12 placeorder_headbg">
@@ -236,7 +235,7 @@
                                     </div>
                                     <div id="place_order" class="col-md-12 samlpebtn_outer">
                                         <div class="col-md-12 samlpebtn_wrap">
-                                           <button class="col-md-12 btn btn-danger dangerbtn" type="submit">
+                                           <button class="col-md-12 btn btn-danger dangerbtn" onclick="add_to_cart()" type="submit">
                                                     ADD TO CART</button>
                                             
                                         </div>
@@ -246,11 +245,10 @@
                                                 </div>
                                             </div></a>
                                     </div>
-                                    <div id="no_service_area" style="display:none" class="col-md-12 samlpebtn_outer">
+									<div id="no_service_area" style="display:none" class="col-md-12 samlpebtn_outer">
                                         Sorry..Currently we do not provide service in this area we will notify you soon!!!!
                                     </div>
-                                    </form>
-                                </div>
+                                 </div>
 
                             </div>
                             <div class="col-md-6 sold_wrap">
@@ -270,7 +268,7 @@
                                             <li>Cheque at the time of Delivery</li>
                                             <li>NEFT within 24 hours of Delivery </li>
                                             <li>Demand Draft </li>
-                                            </ul>
+											</ul>
                                     </div>
                                 </div>
                             </div>
@@ -304,14 +302,14 @@
             <div class="row">
                 <div class="col-md-12 feature__outer">
                     <div class="col-md-12 feature__wrap">
-                        <h3>Key Features of {{  $data[0]->name  }}</h3>
+                        <h3>Key Features of {{	$data[0]->name	}}</h3>
                         <ul>
-                            <li>{{  $data[0]->description   }}</li>
+                            <li>{{	$data[0]->description	}}</li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>	
         <div class="container">
             <div class="row">
                 <div class="col-md-12 feature__outer">
@@ -319,20 +317,20 @@
                         <div class="col-md-3 infohelp__txt"><p>Was this information Helpful?</p></div>
                         <div class="col-md-2 infohelp__txt2"><span>Yes</span><a id="feedback_yes" href="#"><img src="{{URL::asset('testing/b/img/thumbsup.png')}}"></a></div>
                         <div class="col-md-2 infohelp__txt2">
-                            <span>No</span><a id="feedback_no" href="#">
-                                <img src="{{URL::asset('testing/b/img/thumbsdown.png')}}"></a>
-                                <div style="display:none;" id="feedback_no_text"><textarea id="feedback_no_comment">
-                                
-                                </textarea>
-                                <input  value="Okay!!!" id="submit_feedback" class="col-md-12 btn btn-danger dangerbtn" type="button" /></div>
-                        </div>
-                        
+							<span>No</span><a id="feedback_no" href="#">
+								<img src="{{URL::asset('testing/b/img/thumbsdown.png')}}"></a>
+								<div style="display:none;" id="feedback_no_text"><textarea id="feedback_no_comment">
+								
+								</textarea>
+								<input  value="Okay!!!" id="submit_feedback" class="col-md-12 btn btn-danger dangerbtn" type="button" /></div>
+						</div>
+						
                     </div>
-                    <div id="feedback_message">
-                    </div>
+					<div id="feedback_message">
+				    </div>
                 </div>
             </div>
-        </div>  
+        </div>	
         <div class="container">
 
         </div>
@@ -378,7 +376,7 @@
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>	
         <div class="foottopborder_wrap">
             <div class="container">
                 <div class="row">
@@ -386,7 +384,7 @@
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>	
         <div class="footer_wrap">
             <div class="container">
                 <div class="row">
@@ -495,15 +493,15 @@
                 </div>
             </div>
         </div>
-    <input type="hidden" value="{{$data[0]->id}}" id="product_id"/>
-    <input type="hidden" value="{{$data[1]}}" id="user_id"/>
+	<input type="hidden" value="{{$data[0]->id}}" id="product_id"/>
+	<input type="hidden" value="{{$data[1]}}" id="user_id"/>
     </body>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="{{URL::asset('testing/b/js/jquery.min.js')}}"></script>
     <script src="{{URL::asset('testing/b/js/bootstrap.js')}}"></script>
     <script>
 
-    
+	
         $(document).ready(function()
         {
             var initial_mrp = $('#mrp').val();
@@ -538,33 +536,49 @@
                     }
                 });
             }
-            $('#feedback_yes').click(function() {
-                var product_id= $('#product_id').val();
-                var user_id= $('#user_id').val();
-                var feedback = "Yes";
+			$('#feedback_yes').click(function() {
+				var product_id= $('#product_id').val();
+				var user_id= $('#user_id').val();
+				var feedback = "Yes";
                 var comment = "no comments"
-                $.get("{{URL::asset('feedback')}}",{product_id: product_id,user_id: user_id,feedback:feedback,comment:comment}, function(data){
-                    /*.done(function() {*/
-                     $('#infowrap').hide();
+				$.get("{{URL::asset('feedback')}}",{product_id: product_id,user_id: user_id,feedback:feedback,comment:comment}, function(data){
+					/*.done(function() {*/
+					 $('#infowrap').hide();
                     $('#feedback_message').html("<p>Thank You For Your Feedback. We Will Get Back To You!!!</p>");
-          /*              })*/
-                });
-            });
-            $('#feedback_no').click(function() {
-                $('#feedback_no_text').show();
-            });
-            $('#submit_feedback').click(function() {
-                var product_id= $('#product_id').val();
-                var user_id= $('#user_id').val();
-                var feedback = "No";
-                var comment = $('#feedback_no_comment').val();
-                $.get("{{URL::asset('feedback')}}",{product_id: product_id,user_id: user_id,feedback:feedback,comment:comment}, function(data){
-                    /*.done(function() {*/
+          /*  			  })*/
+				});
+			});
+			$('#feedback_no').click(function() {
+				$('#feedback_no_text').show();
+			});
+			$('#submit_feedback').click(function() {
+				var product_id= $('#product_id').val();
+				var user_id= $('#user_id').val();
+				var feedback = "No";
+				var comment = $('#feedback_no_comment').val();
+				$.get("{{URL::asset('feedback')}}",{product_id: product_id,user_id: user_id,feedback:feedback,comment:comment}, function(data){
+					/*.done(function() {*/
                         $('#infowrap').hide();
-                    $('#feedback_message').html("<p>Thank You For Your Feedback. We Will Get Back To You!!!</p>");
-                 /* })*/
-                });
-            });
+					$('#feedback_message').html("<p>Thank You For Your Feedback. We Will Get Back To You!!!</p>");
+				 /* })*/
+				});
+			});
         });
+function add_to_cart() {
+                var product_id = $('#product_id').val();
+                var user_id = $('#user_id').val();
+                var variant = $('#variant').val();
+                var quantity = $('#quantity').val(); 
+             $.ajax({
+      url: 'add_to_cart',
+      type: "post",
+      data: {'product_id':product_id, '_token': $('#token').val(),'variant':variant,'quantity':quantity},
+      success: function(data){
+
+
+           }
+    });      
+  
+        }
     </script>
 </html>
