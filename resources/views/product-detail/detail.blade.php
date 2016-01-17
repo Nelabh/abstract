@@ -234,8 +234,8 @@
                                         </div>
                                     </div>
                                     <div id="place_order" class="col-md-12 samlpebtn_outer">
-                                        <div class="col-md-12 samlpebtn_wrap">
-                                           <button class="col-md-12 btn btn-danger dangerbtn" onclick="add_to_cart()" type="submit">
+                                        <div class="col-md-12 samlpebtn_wrap " id = "cart">
+                                           <button class="col-md-12 btn btn-danger dangerbtn" id="cartbutton" onclick="add_to_cart()" type="submit">
                                                     ADD TO CART</button>
                                             
                                         </div>
@@ -569,14 +569,15 @@ function add_to_cart() {
                 var user_id = $('#user_id').val();
                 var variant = $('#variant').val();
                 var quantity = $('#quantity').val(); 
+                var vcost = $('#vcost').val();
              $.ajax({
       url: 'add_to_cart',
-      type: "post",
-      data: {'product_id':product_id, '_token': $('#token').val(),'variant':variant,'quantity':quantity},
-      success: function(data){
+      type: "get",
+      data: {'product_id':product_id, '_token': $('#token').val(),'variant':variant,'quantity':quantity,'vcost':vcost,'user_id':user_id},
+      success: function(){
 
-
-           }
+        $('#cartbutton').hide();
+        $('#cart').html('<p>Product Successfully Added To Cart</p>')         }
     });      
   
         }

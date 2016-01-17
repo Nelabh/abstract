@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-
+use Request;
+use Input;
+use DB;
 class AjaxController extends BaseController
 {
     use DispatchesJobs, ValidatesRequests;
@@ -23,9 +25,11 @@ class AjaxController extends BaseController
             $num = 0;
           $variant = DB::table('view_products')->where('parent_product_id', $data[0]->parent_product_id)->get();
            $parent_product_data = DB::table('parent_products')->where('id', $data[0]->parent_product_id)->get();
-
+            $userid = Input::get('user_id');         
+            $vcost = Input::get('vcost');
             $var = Input::get('variant');
             $var_varient = $variant[$var];
+            $total = $vcost * $quantity;
             $name = DB::table('users')->where('email', $email)->pluck('name');
             $contact = DB::table('users')->where('email', $email)->pluck('phone');
             $username = DB::table('users')->where('email', $email)->pluck('username');
@@ -34,6 +38,15 @@ class AjaxController extends BaseController
             $city = DB::table('meta')->where('email', $email)->pluck('city');
             $state = DB::table('meta')->where('email', $email)->pluck('state');
             $zip = DB::table('meta')->where('email', $email)->pluck('zipcode');
+              $random = '';
+            $length = 10;
+    for($i = 0; $i < $length; $i++) {
+        $random .= mt_rand(0, 9);
+    }
+    DB::table('orders')->insert(['order_user_id'=>$userid,'order_amount'=>$total,'order_ship_name'=>$name,'order_ship_address1'=>$add1,'order_ship_address2'=>$add2,'order_city'=>$city,'order_state'=>$state,'order_zip'=>$zip,'order_phone'=>$contact,'order_date'=>date("Y-m-d"),'order_shipped'=>0,'order_email'=>$email,'order_tracking_number'=>$random]);
+    $order_id = DB::table('orders')->where('order_tracking_number', $random)->pluck('order_id');
+    DB::table('order_details')->insert(['detail_order_id'=>$order_id,'detail_product_id'=>$id,'detail_name'=>$var_varient->variant_name,'detail_price'=>$vcost,'detail_quantity'=>$quantity]);
+
 /*            
 $check=DB::table('meta')->where('email',$email)->pluck('email');
 if(!empty($check))
@@ -45,7 +58,7 @@ else
     DB::table('meta')->insert(['email'=>$email,'address1' => $add1, 'address2' => $add2,'city' => $city,'state' => $state,'zipcode' => $zip]);
 }     
 
-*/
+
             $text.="The order has been placed by " . $username . " with following specifications:<br/>";
 
 
@@ -68,7 +81,10 @@ else
                 $m->from('contact@vkulp.com');
                 $m->to('nelabhkotiya@gmail.com', 'placeorder')->subject($subj);
             });
+
             return Redirect::to('/wait_order');
+            */
+            return 1;
         }
         } else {
             return Redirect::to('/auth/login');

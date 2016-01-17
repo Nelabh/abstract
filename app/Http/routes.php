@@ -114,6 +114,8 @@ return "Your Laravel version is ".$laravel::VERSION;
 
 
 //Testing Routes
+Route::get('detail/add_to_cart',array('before'=>'csrf','uses'=>'AjaxController@add_to_cart'));
+
 
 Route::get('buyer',array( 'as'=>'bdc','uses'=>'testing\BDController@home'));
 Route::post('request',array( 'before'=>'csrf','uses'=>'testing\BDController@request'));
