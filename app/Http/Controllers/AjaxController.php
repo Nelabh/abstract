@@ -91,6 +91,23 @@ else
         }
     }
 
+public function add_to_cart() 
+ {
+        if (\Auth::check()) {
+            if(Request::ajax())
+            {
+
+            $email = \Auth::user()->email;
+            $id = Input::get('product_id');
+            $userid = Input::get('user_id');
+           
+    DB::table('order_sample')->insert(['product_id'=>$id,'requested_by'=>$userid]);
+            return 1;
+        }
+        } else {
+            return Redirect::to('/auth/login');
+        }
+    }
  
  public function delete_from_cart($prod_id,$order_id) 
  {

@@ -146,7 +146,7 @@
                     </div>
                     <div class="col-md-2 getbutton">
                         <div class="col-md-12 getbutton_outer">	
-                            <button type="button" class="col-md-10 col-md-offset-2 get_quotations">Get Quotations</button>
+                            <button type="button" class="col-md-10 col-md-offset-2 get_quotations">Cart</button>
 
                         </div>
                     </div>
@@ -239,11 +239,11 @@
                                                     ADD TO CART</button>
                                             
                                         </div>
-                                        <a href="{{URL::asset('/req_sample')}}"><div class="col-md-12">
+                                        <div class="col-md-12" id="sample"><a id="samplebutton" onclick="request_sample()">
                                                 <div class="col-md-12 btn btn-default askbtn">
                                                     ASK FOR SAMPLE
                                                 </div>
-                                            </div></a>
+                                            </a></div>
                                     </div>
 									<div id="no_service_area" style="display:none" class="col-md-12 samlpebtn_outer">
                                         Sorry..Currently we do not provide service in this area we will notify you soon!!!!
@@ -581,5 +581,20 @@ function add_to_cart() {
     });      
   
         }
+function request_sample() {
+                var product_id = $('#product_id').val();
+                var user_id = $('#user_id').val();
+                    $.ajax({
+      url: 'request_sample',
+      type: "get",
+      data: {'product_id':product_id, '_token': $('#token').val(),'user_id':user_id},
+      success: function(){
+
+        $('#samplebutton').hide();
+        $('#sample').html('<p>Sample Request Successfully Placed</p>')         }
+    });      
+  
+        }
+
     </script>
 </html>
