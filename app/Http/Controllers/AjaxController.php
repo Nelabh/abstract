@@ -46,44 +46,8 @@ class AjaxController extends BaseController
     DB::table('orders')->insert(['order_user_id'=>$userid,'order_amount'=>$total,'order_ship_name'=>$name,'order_ship_address1'=>$add1,'order_ship_address2'=>$add2,'order_city'=>$city,'order_state'=>$state,'order_zip'=>$zip,'order_phone'=>$contact,'order_date'=>date("Y-m-d"),'order_shipped'=>0,'order_email'=>$email,'order_tracking_number'=>$random]);
     $order_id = DB::table('orders')->where('order_tracking_number', $random)->pluck('order_id');
     DB::table('order_details')->insert(['detail_order_id'=>$order_id,'detail_product_id'=>$id,'detail_name'=>$var_varient->variant_name,'detail_price'=>$vcost,'detail_quantity'=>$quantity]);
+    DB::table('order_status')->insert(['order_id'=>$order_id,'order_tracking_number'=>$random,'order_status'=>"Order Placed. Processing..."]);
 
-/*            
-$check=DB::table('meta')->where('email',$email)->pluck('email');
-if(!empty($check))
-{
-       DB::table('meta')->where('email',$email)->update(['address1' => $add1, 'address2' => $add2,'city' => $city,'state' => $state,'zipcode' => $zip]);
-}  
-else
-{
-    DB::table('meta')->insert(['email'=>$email,'address1' => $add1, 'address2' => $add2,'city' => $city,'state' => $state,'zipcode' => $zip]);
-}     
-
-
-            $text.="The order has been placed by " . $username . " with following specifications:<br/>";
-
-
-
-            $text.="Name: " . $data[0]->name . "<br/>" . "Variant : " . $var_varient->variant_name . "<br/>";
-            $text.="Description: " . $data[0]->description . "<br/>";
-            $text.="Quantity: " . $quantity . "<br/>";
-            $text.="Price: Rs. " . $var_varient->max_retail_price . "<br/>";
-
-
-            $text.="<h2>Buyer Details are as follows:</h2><br/>";
-            $text.="Name of the Buyer: " . $name . "<br/>";
-            $text.="Name of the Hotel: " . $username . " <br/>";
-            $text.="Email id: " . $email . "  <br/>";
-            $text.="Phone No.: " . $contact . "   <br/>";
-            $text.="Address: " . $address . "    <br/>";
-            $text.="Please complete the Order within 48-hours.<br/>Regards,<br/>";
-            $subj = "Order Placed by " . $username;
-            Mail::send(['html' => 'testing.mail'], array('text' => $text), function ($m) use ($subj) {
-                $m->from('contact@vkulp.com');
-                $m->to('nelabhkotiya@gmail.com', 'placeorder')->subject($subj);
-            });
-
-            return Redirect::to('/wait_order');
-            */
             return 1;
         }
         } else {
@@ -91,7 +55,7 @@ else
         }
     }
 
-public function add_to_cart() 
+public function request_sample() 
  {
         if (\Auth::check()) {
             if(Request::ajax())
