@@ -117,6 +117,7 @@ return "Your Laravel version is ".$laravel::VERSION;
 Route::get('detail/add_to_cart',array('before'=>'csrf','uses'=>'AjaxController@add_to_cart'));
 Route::get('detail/request_sample',array('before'=>'csrf','uses'=>'AjaxController@request_sample'));
 
+Route::get('cart',array( 'as'=>'cart','uses'=>'CartController@viewcart'));
 
 Route::get('buyer',array( 'as'=>'bdc','uses'=>'testing\BDController@home'));
 Route::post('request',array( 'before'=>'csrf','uses'=>'testing\BDController@request'));
@@ -131,5 +132,4 @@ Route::get('req_sample',array( 'as'=>'req_sample','uses'=>'ProductDetailControll
 Route::get('wait_order',array( 'as'=>'wait_order','uses'=>'ProductDetailController@wait_order'));
 Route::get('wait_req',array( 'as'=>'wait_req','uses'=>'ProductDetailController@wait_req'));
 Route::get('/feedback','ProductController@submitFeedback');
-
 
