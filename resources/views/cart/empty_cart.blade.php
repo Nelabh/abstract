@@ -237,157 +237,14 @@ img.orientation{
   </div>
 <br>
 <hr>
-
-
-<div class="row align-left-cart" style="padding-top:10px; padding-bottom:10px" >
-  <div class="col-sm-12">
-    <button type="button" class="my-cart" >MY CART({{count($product)}})</button>
-  </div>
-</div>
-
-
-<div class="row">
-  <div class="col-sm-9">
-    <hr>
-    <?php  $i=0;  ?>
-    @foreach($product as $pro)
-    <div class="row">
-      <div class="col-sm-3">
-        <img class="orientation" src="{{URL::asset('home-theme/img/products/')}}/{{$pro->image}}" class="img-responsive" alt="spoon" width="250" height="250">
-      </div>
-
-      <div class="col-sm-9 ">
-        <div class="row text-color">
-          <div class="col-sm-4">
-            <p>{{$pro->variant_name}}</p>
-          </div>
-          <div class="col-sm-2">
-            <p>Price</p>
-          </div>
-          <div class="col-sm-2">
-            <p>Tax</p>
-          </div>
-          <div class="col-sm-2">
-            <p>Delivery Charge</p>
-          </div>
-          <div class="col-sm-2">
-            <p>Total</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-4 text-color">
-            <p></p>
-          </div>
-          <div class="col-sm-2">
-            <i class="fa fa-inr"></i> {{$order_detail[$i]->detail_price}}
-          </div>
-          <div class="col-sm-2">
-            <i class="fa fa-inr"></i> {{$pro->tax}}
-          </div>
-          <div class="col-sm-2">
-            <i class="fa fa-inr"></i> 00.00
-          </div>
-          <div class="col-sm-2">
-            <i class="fa fa-inr"></i> {{$totalcost[$i]}}
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-1 ">
-            <p>Quantity</p>
-          </div>
-          <div class="col-sm-1">
-        <!--     <button type="button right-align" class="btn btn-primary">+</button> 
-         -->  </div>
-          <div class="col-sm-1">
-            <button type="button" class="btn btn-primary">{{$order_detail[$i]->detail_quantity}}</button>
-          </div>
-          <div class="col-sm-1">
-          <!--   <button type="button left-align" class="btn btn-primary">-</button>
-          --> </div>
-          <div class="col-sm-6">   
-          </div>
-          <div class="col-sm-2">
-            <p><!-- Remove --></p>
-          </div>
-        </div>
-      </div>
-    </div>
-<?php $i++;  ?>
-@endforeach
-
-
-
-
-
-
-    <b><p class="text-centre">Product will be dispached in 2-3 days</p></b>
-    <hr>
-  </div>
-
-
-
-  <div class="col-sm-3">
-    <div style="padding-right:20px;">
-    <div class="summary" >
-      <h3 class="text-centre">SUMMARY</h3>
-      <div style=" padding-left:20px; padding-right:20px; padding-top:10px; ">
-        <hr>
-      </div>
-
-      <div class="row text-color">
-        <div class="col-sm-6">
-          <p class="align-left">Subtotal</p>
-        </div>
-        <div class="col-sm-6">:
-          <i class="fa fa-inr"></i> {{$subtotal}}
-        </div>
-      </div>
-
-      <div class="row text-color">
-        <div class="col-sm-6">
-          <p class="align-left">Total Tax</p>
-        </div>
-        <div class="col-sm-6">:
-          <i class="fa fa-inr"></i> {{$tottax}}
-        </div>
-      </div>
-
-      <div class="row text-color">
-        <div class="col-sm-6">
-          <p class="align-left">Delivery Charges</p>
-        </div>
-        <div class="col-sm-6">:
-          <i class="fa fa-inr"></i> 00.00
-        </div>
-      </div>
-
-      <div class="row text-color">
-        <div class="col-sm-6">
-          <p class="align-left">Payable Amount</p>
-        </div>
-        <div class="col-sm-6">:
-          <i class="fa fa-inr"></i> {{$payamt}}
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-12 text-centre">
-          <button type="button" class="btn btn-success">PLACE ORDER</button>
-        </div>
-      </div>
-      <br>
-    </div>
-  </div>
-    <br>
+<center><h3>No Product Is Added In Cart</h3></center>
     <div class="row">
         <div class="col-sm-12 form-group text-centre">
-          <input class="btn btn-theme btn-theme-transparent" type="submit" value="Continue Shopping">
+          <a class="btn btn-theme btn-theme-transparent" href="{{URL::asset('/')}}">Continue Shopping</a>
         </div>
       </div>
-  </div>
-</div>
+  
+
 
 <br>
 <br>
@@ -448,6 +305,8 @@ img.orientation{
             </div>
         </div>
     </div>
+  </div>
+</div>
 </footer>
 
 </body>
