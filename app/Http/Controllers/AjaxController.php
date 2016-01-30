@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Request;
 use Input;
 use DB;
+use Redirect;
 class AjaxController extends BaseController
 {
     use DispatchesJobs, ValidatesRequests;
@@ -29,7 +30,49 @@ class AjaxController extends BaseController
             $vcost = Input::get('vcost');
             $var = Input::get('variant');
             $var_varient = $variant[$var];
+            $id = $var_varient->id;
             $total = $vcost * $quantity;
+            $existingid =DB::table('orders')->where('order_shipped',0)->where('order_user_id',$userid)->pluck('order_id');
+            if($existingid)
+            {
+                $existtotal = DB::table('orders')->where('order_id',$existingid)->pluck('order_amount');
+                $total += $existtotal;
+                DB::table('orders')->where('order_id',$existingid)->update(['order_amount'=>$total]);
+                $existing_products = DB::table('order_details')->where('detail_order_id',$existingid)->get();
+                if($existing_products)
+                {
+                    $existing_product_id = array();
+                    foreach ($existing_products as $prod)
+                      {
+                          $existing_product_id[]  = $prod->detail_product_id;    
+                      }  
+                      if(in_array($id, $existing_product_id))
+                      {
+                            $detail_id = DB::table('order_details')->where('detail_order_id',$existingid)->where('detail_product_id',$id)->pluck('detail_id');
+                            $existing_quantity  = DB::table('order_details')->where('detail_id',$detail_id)->pluck('detail_quantity');
+                            $existing_quantity += $quantity;
+                            DB::table('order_details')->where('detail_id',$detail_id)->update(['detail_quantity'=>$existing_quantity]);
+                        
+                      }
+                      else
+                      {
+                        DB::table('order_details')->insert(['detail_order_id'=>$existingid,'detail_product_id'=>$id,'detail_name'=>$var_varient->variant_name,'detail_price'=>$vcost,'detail_quantity'=>$quantity]);
+                        $random = DB::table('orders')->where('order_id',$existingid)->pluck('order_tracking_number');
+                        DB::table('order_status')->insert(['order_id'=>$existingid,'order_tracking_number'=>$random,'order_status'=>"Order Placed. Processing..."]);
+                
+                      }
+
+
+                }  
+                else
+                {
+                    DB::table('order_details')->insert(['detail_order_id'=>$existingid,'detail_product_id'=>$id,'detail_name'=>$var_varient->variant_name,'detail_price'=>$vcost,'detail_quantity'=>$quantity]);
+                    $random = DB::table('orders')->where('order_id',$existingid)->pluck('order_tracking_number');
+                    DB::table('order_status')->insert(['order_id'=>$existingid,'order_tracking_number'=>$random,'order_status'=>"Order Placed. Processing..."]);
+                
+                }
+            }
+            else{
             $name = DB::table('users')->where('email', $email)->pluck('name');
             $contact = DB::table('users')->where('email', $email)->pluck('phone');
             $username = DB::table('users')->where('email', $email)->pluck('username');
@@ -47,7 +90,7 @@ class AjaxController extends BaseController
     $order_id = DB::table('orders')->where('order_tracking_number', $random)->pluck('order_id');
     DB::table('order_details')->insert(['detail_order_id'=>$order_id,'detail_product_id'=>$id,'detail_name'=>$var_varient->variant_name,'detail_price'=>$vcost,'detail_quantity'=>$quantity]);
     DB::table('order_status')->insert(['order_id'=>$order_id,'order_tracking_number'=>$random,'order_status'=>"Order Placed. Processing..."]);
-
+        }
             return 1;
         }
         } else {
