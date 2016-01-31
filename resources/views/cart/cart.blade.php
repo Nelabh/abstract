@@ -311,6 +311,9 @@ img.orientation{
           <div class="col-sm-2">
             <p><a href="{{URL::asset('remove_from_cart')}}/{{$pro->id}}/{{$order_detail[$i]->detail_order_id}}">Remove</a></p>
           </div>
+          @if($pro->active==0)
+          <p>Out Of Stock</p>
+          @endif
         </div>
       </div>
     </div>
