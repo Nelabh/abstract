@@ -116,30 +116,6 @@ public function request_sample()
         }
     }
  
- public function delete_from_cart($prod_id,$order_id) 
- {
-        if (\Auth::check()) {      
-            $email = \Auth::user()->email;       
- $qty =    DB::table('order_details')->where('detail_order_id',$order_id)->where('detail_product_id',$prod_id)->pluck('detail_quantity');
- $price = DB::table('order_details')->where('detail_order_id',$order_id)->where('detail_product_id',$prod_id)->pluck('detail_price');
- DB::table('order_details')->where('detail_order_id',$order_id)->where('detail_product_id',$prod_id)->delete();
- $amt= DB::table('orders')->where('order_id',$order_id)->pluck('order_amount');
- $chamt=$amt-($qty*$price);
- DB::table('orders')->where('order_id',$order_id)->update(['order_amount'=>$chamt]);
-$products = DB::table('order_details')->where('detail_order_id',$order_id)->pluck('detail_product_id');
-if(!$products)
-{
- DB::table('orders')->where('order_id',$order_id)->delete();
-
-}  
-
-            return Redirect::to('cart');
-            
-        
-        } else {
-            return Redirect::to('/auth/login');
-        }
-    }
 
    
 }

@@ -298,14 +298,14 @@ img.orientation{
             <p>Quantity</p>
           </div>
           <div class="col-sm-1">
-        <!--     <button type="button right-align" class="btn btn-primary">+</button> 
-         -->  </div>
+            <a  href ="{{URL::asset('increment_quantity')}}/{{$pro->id}}/{{$order_detail[$i]->detail_order_id}}" type="button right-align" class="btn btn-primary">+</a> 
+          </div>
           <div class="col-sm-1">
             <button type="button" class="btn btn-primary">{{$order_detail[$i]->detail_quantity}}</button>
           </div>
           <div class="col-sm-1">
-          <!--   <button type="button left-align" class="btn btn-primary">-</button>
-          --> </div>
+            <a  href= "{{URL::asset('decrement_quantity')}}/{{$pro->id}}/{{$order_detail[$i]->detail_order_id}}" type="button left-align" class="btn btn-primary">-</a>
+          </div>
           <div class="col-sm-6">   
           </div>
           <div class="col-sm-2">
