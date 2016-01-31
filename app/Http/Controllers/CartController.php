@@ -37,17 +37,39 @@ public function viewcart()
 		foreach ($prodid as $id) {
 			 $product[] = DB::table('products')->where('id',$id)->first();
 		}
+		foreach ($product as $pro) {
+			$order_product_v_cost = DB::table('order_details')->where('detail_order_id',$order->order_id)->where('detail_product_id',$pro->id)->pluck('detail_price');
+			$landing_cost = DB::table('products')->where('id',$pro->id)->pluck('landing_cost');
+			$supplier_price = DB::table('products')->where('id',$pro->id)->pluck('supplier_price');
+			$margin = DB::table('products')->where('id',$pro->id)->pluck('margin');
+			$v_cost = $landing_cost + ($supplier_price * $margin/100);
+			if($v_cost!=$order_product_v_cost)
+			{
+				DB::table('order_details')->where('detail_order_id',$order->order_id)->where('detail_product_id',$pro->id)->update(['detail_price'=>$v_cost]);
+			}
+		}
+		$nprodid = array();
+		$norder_detail = DB::table('order_details')->where('detail_order_id',$order->order_id)->get();
+		$i=0;
+		foreach ($norder_detail as $ord) {
+			 $nprodid[]=$ord->detail_product_id;
+		}
+		$nproduct = array(); 
+		foreach ($nprodid as $id) {
+			 $nproduct[] = DB::table('products')->where('id',$id)->first();
+		}
 $subtotal = 0;
 $tottax = 0;
 $payamt = 0;
 $totalcost = array();
-		for ($i=0;$i<count($product);$i++) {
-			 $totalcost[$i] = ($product[$i]->tax +$order_detail[$i]->detail_price) * $order_detail[$i]->detail_quantity; 
-		$subtotal += $order_detail[$i]->detail_price * $order_detail[$i]->detail_quantity;
-		$tottax += $product[$i]->tax * $order_detail[$i]->detail_quantity;
+		for ($i=0;$i<count($nproduct);$i++) {
+			 $totalcost[$i] = ($nproduct[$i]->tax +$norder_detail[$i]->detail_price) * $norder_detail[$i]->detail_quantity; 
+		$subtotal += $norder_detail[$i]->detail_price * $norder_detail[$i]->detail_quantity;
+		$tottax += $nproduct[$i]->tax * $norder_detail[$i]->detail_quantity;
 		$payamt +=$totalcost[$i]; 
 		}
-
+$order_detail = $norder_detail;
+$product = $nproduct; 
 
 //dd($product);
 

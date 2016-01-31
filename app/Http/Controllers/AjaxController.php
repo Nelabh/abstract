@@ -24,7 +24,7 @@ class AjaxController extends BaseController
             $data = DB::table('view_products')->where('id', $id)->get();
             $quantity = Input::get('quantity');
             $num = 0;
-          $variant = DB::table('view_products')->where('parent_product_id', $data[0]->parent_product_id)->get();
+           $variant = DB::table('view_products')->where('parent_product_id', $data[0]->parent_product_id)->get();
            $parent_product_data = DB::table('parent_products')->where('id', $data[0]->parent_product_id)->get();
             $userid = Input::get('user_id');         
             $vcost = Input::get('vcost');
