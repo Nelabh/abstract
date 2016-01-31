@@ -9,6 +9,7 @@ use Request;
 use Input;
 use DB;
 use Auth;	
+use Redirect;
 class CartController extends BaseController
 {
     use DispatchesJobs, ValidatesRequests;

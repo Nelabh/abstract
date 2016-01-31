@@ -132,4 +132,5 @@ Route::get('req_sample',array( 'as'=>'req_sample','uses'=>'ProductDetailControll
 Route::get('wait_order',array( 'as'=>'wait_order','uses'=>'ProductDetailController@wait_order'));
 Route::get('wait_req',array( 'as'=>'wait_req','uses'=>'ProductDetailController@wait_req'));
 Route::get('/feedback','ProductController@submitFeedback');
+Route::get('/remove_from_cart/{prod_id}/{order_id}','AjaxController@delete_from_cart');
 

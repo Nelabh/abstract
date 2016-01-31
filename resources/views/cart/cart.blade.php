@@ -253,7 +253,7 @@ img.orientation{
     @foreach($product as $pro)
     <div class="row">
       <div class="col-sm-3">
-        <img class="orientation" src="{{URL::asset('home-theme/img/products/')}}/{{$pro->image}}" class="img-responsive" alt="spoon" width="250" height="250">
+        <img class="orientation" src="{{URL::asset('home-theme/img/products/')}}/{{$pro->image}}" class="img-responsive" width="250" height="250">
       </div>
 
       <div class="col-sm-9 ">
@@ -309,7 +309,7 @@ img.orientation{
           <div class="col-sm-6">   
           </div>
           <div class="col-sm-2">
-            <p><!-- Remove --></p>
+            <p><a href="{{URL::asset('remove_from_cart')}}/{{$pro->id}}/{{$order_detail[$i]->detail_order_id}}">Remove</a></p>
           </div>
         </div>
       </div>
