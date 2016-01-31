@@ -131,7 +131,8 @@ public function request_sample()
  $chamt=$amt-($qty*$price);
  DB::table('orders')->where('order_id',$order_id)->update(['order_amount'=>$chamt]);
 
-            return 1;
+            return Redirect::to('cart');
+            
         }
         } else {
             return Redirect::to('/auth/login');
